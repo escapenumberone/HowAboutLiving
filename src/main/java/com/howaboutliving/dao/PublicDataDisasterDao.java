@@ -1,5 +1,5 @@
 package com.howaboutliving.dao;
 
-public class PublicDataDisasterDao {
+public interface PublicDataDisasterDao {
 
 }

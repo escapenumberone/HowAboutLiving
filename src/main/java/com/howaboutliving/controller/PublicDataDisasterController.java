@@ -1,5 +1,8 @@
 package com.howaboutliving.controller;
 
-public class PublicDataDisasterController {
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class PublicDataDisasterController {
+	
 }
