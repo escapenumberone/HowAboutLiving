@@ -2,7 +2,7 @@ package com.howaboutliving.dto;
 
 public class PublicDataEnvironment {
 	private int id;
-	private String area;
+	private String sidoName;
 	private String stationName;
 	private String dataTime;
 	private String khaiValue;
@@ -20,11 +20,13 @@ public class PublicDataEnvironment {
 	private String pm10Grade;
 	private String pm25Grade;
 
-	public PublicDataEnvironment(String area, String stationName, String dataTime, String khaiValue, String so2Value,
-			String coValue, String o3Value, String no2Value, String pm10Value, String pm25Value, String khaiGrade,
-			String so2Grade, String coGrade, String o3Grade, String no2Grade, String pm10Grade, String pm25Grade) {
+	public PublicDataEnvironment(int id, String sidoName, String stationName, String dataTime, String khaiValue,
+			String so2Value, String coValue, String o3Value, String no2Value, String pm10Value, String pm25Value,
+			String khaiGrade, String so2Grade, String coGrade, String o3Grade, String no2Grade, String pm10Grade,
+			String pm25Grade) {
 		super();
-		this.area = area;
+		this.id = id;
+		this.sidoName = sidoName;
 		this.stationName = stationName;
 		this.dataTime = dataTime;
 		this.khaiValue = khaiValue;
@@ -51,20 +53,12 @@ public class PublicDataEnvironment {
 		this.id = id;
 	}
 
-	public String getArea() {
-		return area;
+	public String getSidoName() {
+		return sidoName;
 	}
 
-	public void setArea(String area) {
-		this.area = area;
-	}
-
-	public String getDataTime() {
-		return dataTime;
-	}
-
-	public void setDataTime(String dataTime) {
-		this.dataTime = dataTime;
+	public void setSidoName(String sidoName) {
+		this.sidoName = sidoName;
 	}
 
 	public String getStationName() {
@@ -73,6 +67,14 @@ public class PublicDataEnvironment {
 
 	public void setStationName(String stationName) {
 		this.stationName = stationName;
+	}
+
+	public String getDataTime() {
+		return dataTime;
+	}
+
+	public void setDataTime(String dataTime) {
+		this.dataTime = dataTime;
 	}
 
 	public String getKhaiValue() {
@@ -189,11 +191,12 @@ public class PublicDataEnvironment {
 
 	@Override
 	public String toString() {
-		return "PublicDataEnvironment [area=" + area + ", stationName=" + stationName + ", dataTime=" + dataTime
-				+ ", khaiValue=" + khaiValue + ", so2Value=" + so2Value + ", coValue=" + coValue + ", o3Value="
-				+ o3Value + ", no2Value=" + no2Value + ", pm10Value=" + pm10Value + ", pm25Value=" + pm25Value
-				+ ", khaiGrade=" + khaiGrade + ", so2Grade=" + so2Grade + ", coGrade=" + coGrade + ", o3Grade="
-				+ o3Grade + ", no2Grade=" + no2Grade + ", pm10Grade=" + pm10Grade + ", pm25Grade=" + pm25Grade + "]";
+		return "PublicDataEnvironment [id=" + id + ", sidoName=" + sidoName + ", stationName=" + stationName
+				+ ", dataTime=" + dataTime + ", khaiValue=" + khaiValue + ", so2Value=" + so2Value + ", coValue="
+				+ coValue + ", o3Value=" + o3Value + ", no2Value=" + no2Value + ", pm10Value=" + pm10Value
+				+ ", pm25Value=" + pm25Value + ", khaiGrade=" + khaiGrade + ", so2Grade=" + so2Grade + ", coGrade="
+				+ coGrade + ", o3Grade=" + o3Grade + ", no2Grade=" + no2Grade + ", pm10Grade=" + pm10Grade
+				+ ", pm25Grade=" + pm25Grade + "]";
 	}
 
 }

@@ -22,7 +22,7 @@ public class PublicDataEnvironmentController {
 	}
 	
 	@GetMapping("/add")
-	public void addPublicDataEnvironment() throws ClientProtocolException, IOException {
+	public void addPublicDataEnvironment() throws ClientProtocolException, IOException, InterruptedException {
 		publicDataEnvironmentService.insertPublicDataEnvironmentService();
 	}
 	

@@ -9,20 +9,12 @@ import com.howaboutliving.dto.PublicDataEnvironment;
 
 public interface PublicDataEnvironmentService {
 
-	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException;
+	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException;
 
-	String getEmptyMsrstnListStr() throws IOException;
+	String getSidoEnvironmentStr(String sidoName) throws IOException;
 
-	int getTotalCountOfMsrstnList() throws IOException;
+	String setSidoEnvironment(String sidoName) throws IOException;
 
-	String getPublicDataEnvironment() throws ClientProtocolException, IOException;
-
-	String getMsrstnListStr(CloseableHttpClient httpClient, String MsrstnListURL)
-			throws ClientProtocolException, IOException;
-
-	PublicDataEnvironment setFirstEnvironment(String stationName, String addr) throws IOException;
-
-	String getFirstEnvironmentStr(String stationName) throws IOException;
-
+	
 	
 }

@@ -4,8 +4,8 @@
 <mapper namespace="environment">
 
 	<insert id="insertPublicDataEnvironment" useGeneratedKeys="true" keyProperty="id" parameterType="PublicDataEnvironment">
-		INSERT INTO environment(area, stationName, dataTime, khaiValue, so2Value, coValue, o3Value, no2Value, pm10Value, pm25Value, khaiGrade, so2Grade, coGrade, o3Grade, no2Grade, pm10Grade, pm25Grade)
-		VALUES(#{area}, #{stationName}, #{dataTime}, #{khaiValue}, #{so2Value}, #{coValue}, #{o3Value}, #{no2Value}, #{pm10Value}, #{pm25Value}, #{khaiGrade}, #{so2Grade}, #{coGrade}, #{o3Grade}, #{no2Grade}, #{pm10Grade}, #{pm25Grade})
+		INSERT INTO environment(sidoName, stationName, dataTime, khaiValue, so2Value, coValue, o3Value, no2Value, pm10Value, pm25Value, khaiGrade, so2Grade, coGrade, o3Grade, no2Grade, pm10Grade, pm25Grade)
+		VALUES(#{sidoName}, #{stationName}, #{dataTime}, #{khaiValue}, #{so2Value}, #{coValue}, #{o3Value}, #{no2Value}, #{pm10Value}, #{pm25Value}, #{khaiGrade}, #{so2Grade}, #{coGrade}, #{o3Grade}, #{no2Grade}, #{pm10Grade}, #{pm25Grade})
 	</insert>
 	
 </mapper>
