@@ -47,9 +47,9 @@ public class TestController {
 		return "im testman";
 	}
 
-//	@RequestMapping("/save")
-//	String save() {
-//		tService.save();
-//		return "im save";
-//	}
+	@RequestMapping("/save")
+	String save() {
+		tService.save();
+		return "im save";
+	}
 }

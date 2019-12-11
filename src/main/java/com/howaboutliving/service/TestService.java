@@ -12,6 +12,6 @@ public interface TestService {
 	List<Test> getList();
 	void insert();
 	void insertList();
-//	void save();
+	void save();
 	
 }

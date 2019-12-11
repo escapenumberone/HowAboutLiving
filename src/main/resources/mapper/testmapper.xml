@@ -17,4 +17,13 @@
 		(#{item.SEQ}, #{item.ITEMID})
 		</foreach>
 	</insert>
+	
+	<insert id="save" parameterType="java.util.List">
+		INSERT into disaster
+		(id, dsstrRiskLc, dsstrRiskAddr, dsstrRiskType, dsstrRiskGrad, appnDate, infoModDate, relisDate) values
+		<foreach item="item" index="index" collection="list" separator=",">
+		(0, #{item.dsstrRiskLc}, #{item.dsstrRiskAddr}, #{item.dsstrRiskType}, #{item.dsstrRiskGrad}, #{item.appnDate}, #{item.infoModDate}, #{item.relisDate})
+		</foreach>
+	</insert>
+	
 </mapper>
