@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.howaboutliving.dao.TestDao">
-	<select id="getList" resultType="com.howaboutliving.dto.Test">
-		SELECT * FROM test
-	</select>
-	
-	<insert id="insert" parameterType="com.howaboutliving.dto.Test">
-		INSERT into test values
-		(#{SEQ}, #{ITEMID})
-	</insert>
-	
-	<insert id="insertList" parameterType="java.util.List">
-		INSERT into test
-		(SEQ, ITEMID) values
-		<foreach item="item" index="index" collection="list" separator=",">
-		(#{item.SEQ}, #{item.ITEMID})
-		</foreach>
-	</insert>
-	
 	<insert id="save" parameterType="java.util.List">
 		INSERT into disaster
 		(id, dsstrRiskLc, dsstrRiskAddr, dsstrRiskType, dsstrRiskGrad, appnDate, infoModDate, relisDate) values
 		<foreach item="item" index="index" collection="list" separator=",">
 		(0, #{item.dsstrRiskLc}, #{item.dsstrRiskAddr}, #{item.dsstrRiskType}, #{item.dsstrRiskGrad}, #{item.appnDate}, #{item.infoModDate}, #{item.relisDate})
 		</foreach>
+	</insert>
+	
+	<insert id="insertPublicDataEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		INSERT INTO envtest(id, sidoName, stationName, dataTime, khaiValue, so2Value, coValue, o3Value, no2Value, pm10Value, pm25Value, khaiGrade, so2Grade, coGrade, o3Grade, no2Grade, pm10Grade, pm25Grade)
+		VALUES(0, #{sidoName}, #{stationName}, #{dataTime}, #{khaiValue}, #{so2Value}, #{coValue}, #{o3Value}, #{no2Value}, #{pm10Value}, #{pm25Value}, #{khaiGrade}, #{so2Grade}, #{coGrade}, #{o3Grade}, #{no2Grade}, #{pm10Grade}, #{pm25Grade})
 	</insert>
 	
 </mapper>

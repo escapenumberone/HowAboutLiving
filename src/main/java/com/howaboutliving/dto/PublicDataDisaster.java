@@ -1,7 +1,6 @@
 package com.howaboutliving.dto;
 
 public class PublicDataDisaster {
-	int id;
 	String dsstrRiskLc;
 	String dsstrRiskAddr;
 	String dsstrRiskType;
@@ -10,9 +9,8 @@ public class PublicDataDisaster {
 	String infoModDate;
 	String relisDate;
 
-	public PublicDataDisaster(int id, String dsstrRiskLc, String dsstrRiskAddr, String dsstrRiskType,
+	public PublicDataDisaster(String dsstrRiskLc, String dsstrRiskAddr, String dsstrRiskType,
 			String dsstrRiskGrad, String appnDate, String infoModDate, String relisDate) {
-		this.id = id;
 		this.dsstrRiskLc = dsstrRiskLc;
 		this.dsstrRiskAddr = dsstrRiskAddr;
 		this.dsstrRiskType = dsstrRiskType;
@@ -20,12 +18,6 @@ public class PublicDataDisaster {
 		this.appnDate = appnDate;
 		this.infoModDate = infoModDate;
 		this.relisDate = relisDate;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getDsstrRiskLc() {
 		return dsstrRiskLc;

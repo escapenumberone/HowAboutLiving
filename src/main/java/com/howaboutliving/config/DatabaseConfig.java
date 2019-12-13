@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @MapperScan(basePackages="com.howaboutliving.dao")
-@EnableTransactionManagement // 뭔지 궁금, 일단 씀
+@EnableTransactionManagement // 뭐하는앤지 나중에 확실히 알 것
 public class DatabaseConfig {
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
