@@ -3,12 +3,14 @@ package com.howaboutliving.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,22 +82,11 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 				+ "&numOfRows=" + NUMOFROWS + "&pageNo=1" + "&sidoName=" + sidoName + "&_returnType=json";
 
 		HttpGet httpGet = new HttpGet(sidoEnvironmentURL);
-
+		
 		CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-
-		BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
-
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = reader.readLine()) != null) {
-			response.append(inputLine);
-		}
-
-		reader.close();
-
-		String str = response.toString();
-
+		
+		String str = EntityUtils.toString(httpResponse.getEntity());
+		
 		return str;
 	}
 
