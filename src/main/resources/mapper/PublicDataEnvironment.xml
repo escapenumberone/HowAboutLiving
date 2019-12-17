@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace="environment">
-
-	<insert id="insertPublicDataEnvironment" useGeneratedKeys="true" keyProperty="id" parameterType="PublicDataEnvironment">
-		INSERT INTO environment(sidoName, stationName, dataTime, khaiValue, so2Value, coValue, o3Value, no2Value, pm10Value, pm25Value, khaiGrade, so2Grade, coGrade, o3Grade, no2Grade, pm10Grade, pm25Grade)
-		VALUES(#{sidoName}, #{stationName}, #{dataTime}, #{khaiValue}, #{so2Value}, #{coValue}, #{o3Value}, #{no2Value}, #{pm10Value}, #{pm25Value}, #{khaiGrade}, #{so2Grade}, #{coGrade}, #{o3Grade}, #{no2Grade}, #{pm10Grade}, #{pm25Grade})
+<mapper namespace="com.howaboutliving.dao.PublicDataEnvironmentDao">
+	<insert id="insertPublicDataEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		INSERT INTO environment(id, stationName, dataTime, khaiValue, so2Value, coValue, o3Value, no2Value, pm10Value, pm25Value, khaiGrade, so2Grade, coGrade, o3Grade, no2Grade, pm10Grade, pm25Grade)
+		VALUES(0, #{stationName}, #{dataTime}, #{khaiValue}, #{so2Value}, #{coValue}, #{o3Value}, #{no2Value}, #{pm10Value}, #{pm25Value}, #{khaiGrade}, #{so2Grade}, #{coGrade}, #{o3Grade}, #{no2Grade}, #{pm10Grade}, #{pm25Grade})
 	</insert>
 	
+	<delete id="deletePublicDataEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		DELETE FROM environment
+	</delete>
+	
+	<update id="autoIncrementReset">
+		ALTER TABLE environment AUTO_INCREMENT = 1
+	</update>
 </mapper>
-  
