@@ -1,5 +1,8 @@
 package com.howaboutliving.service;
 
-public interface PublicDataDisasterService {
+import org.springframework.stereotype.Service;
 
+@Service
+public interface PublicDataDisasterService {
+	void save();
 }

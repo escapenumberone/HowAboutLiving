@@ -21,7 +21,7 @@ public class DatabaseConfig {
 		final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		sessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/testmapper.xml")); // 일단 testmapper만 적용시킨거임 나중에 *로 바꿔야함
+		sessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
 		return sessionFactory.getObject();
 	}
 	

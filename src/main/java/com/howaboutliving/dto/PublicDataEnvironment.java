@@ -2,7 +2,6 @@ package com.howaboutliving.dto;
 
 public class PublicDataEnvironment {
 	private int id;
-	private String sidoName;
 	private String stationName;
 	private String dataTime;
 	private String khaiValue;
@@ -20,13 +19,12 @@ public class PublicDataEnvironment {
 	private String pm10Grade;
 	private String pm25Grade;
 
-	public PublicDataEnvironment(int id, String sidoName, String stationName, String dataTime, String khaiValue,
+	public PublicDataEnvironment(int id, String stationName, String dataTime, String khaiValue,
 			String so2Value, String coValue, String o3Value, String no2Value, String pm10Value, String pm25Value,
 			String khaiGrade, String so2Grade, String coGrade, String o3Grade, String no2Grade, String pm10Grade,
 			String pm25Grade) {
 		super();
 		this.id = id;
-		this.sidoName = sidoName;
 		this.stationName = stationName;
 		this.dataTime = dataTime;
 		this.khaiValue = khaiValue;
@@ -51,14 +49,6 @@ public class PublicDataEnvironment {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getSidoName() {
-		return sidoName;
-	}
-
-	public void setSidoName(String sidoName) {
-		this.sidoName = sidoName;
 	}
 
 	public String getStationName() {
@@ -191,7 +181,7 @@ public class PublicDataEnvironment {
 
 	@Override
 	public String toString() {
-		return "PublicDataEnvironment [id=" + id + ", sidoName=" + sidoName + ", stationName=" + stationName
+		return "PublicDataEnvironment [id=" + id + ", stationName=" + stationName
 				+ ", dataTime=" + dataTime + ", khaiValue=" + khaiValue + ", so2Value=" + so2Value + ", coValue="
 				+ coValue + ", o3Value=" + o3Value + ", no2Value=" + no2Value + ", pm10Value=" + pm10Value
 				+ ", pm25Value=" + pm25Value + ", khaiGrade=" + khaiGrade + ", so2Grade=" + so2Grade + ", coGrade="

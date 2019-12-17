@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableScheduling
@@ -19,34 +20,13 @@ public class JobInvokeController {
 	@Autowired
 	Job processJob;
 	
-	@Autowired
-	Job processJobSecond;
-	
-//	@Scheduled(cron = "*/5 * * * * *")
-//	public void testMan() {
-//		System.out.println("테스트 맨");
-//	}
-//	
-//	@Scheduled(cron = "*/5 * * * * *")
-	public void handle() {
-		System.out.println("배치 실행 됨");
+	@Scheduled(cron = "0 0 */1 * * *")  // 매시 0분 0초에 실행
+	public void publicDataEnvironmentBatch() {
+		System.out.println("환경 데이터 업데이트 시작");
 		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 		.toJobParameters();
 		try {
 			jobLauncher.run(processJob, jobParameters);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-//	@Scheduled(cron = "*/15 * * * * *")
-	public void handleSecond() {
-		System.out.println("두번째 배치 실행 됨");
-		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
-		.toJobParameters();
-		try {
-			jobLauncher.run(processJobSecond, jobParameters);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

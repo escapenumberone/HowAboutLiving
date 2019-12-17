@@ -1,5 +1,12 @@
 package com.howaboutliving.dao;
 
-public interface PublicDataDisasterDao {
+import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+import com.howaboutliving.dto.PublicDataDisaster;
+
+@Repository
+public interface PublicDataDisasterDao {
+	void save(List<PublicDataDisaster> list);
 }
