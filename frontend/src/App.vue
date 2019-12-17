@@ -3,19 +3,25 @@
     <router-view/>
     <Header/>
     <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Smile/>
+    <Statistics/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
-import HelloWorld from './components/HelloWorld';
+import Smile from './components/Smile';
+import Statistics from './components/Statistics';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
   components: {
     Header,
-    HelloWorld
+    Smile,
+    Statistics,
+    Footer
   }
 }
 </script>
@@ -29,4 +35,13 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
 }
+
+#fixedFooter{
+    position:fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
 </style>
