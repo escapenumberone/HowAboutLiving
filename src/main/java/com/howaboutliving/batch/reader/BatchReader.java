@@ -37,7 +37,7 @@ public class BatchReader implements ItemReader<String> {
 			System.out.println("url : " + sidoEnvironmentURL);
 			System.out.println(sidoName + " 정보");
 			responseString = restTemplate.getForObject(uri, String.class);
-			Thread.sleep(1000);
+			Thread.sleep(1000); // open api 서버 블락 방지
 		} catch (URISyntaxException e) {
 			System.out.println("open api 서버 연결 에러");
 			e.printStackTrace();

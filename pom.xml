@@ -40,10 +40,12 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.16.20</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,7 +75,7 @@
 			<artifactId>httpclient</artifactId>
 		</dependency>
 
-		<!-- json 파싱 디펜던시 -->
+		<!-- gson을 위한 디펜던시 -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -99,7 +101,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>1.2.3</version>
         </dependency>
-		
 
 	</dependencies>
 
