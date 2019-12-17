@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.howaboutliving.service.PublicDataDisasterService;
 
+/**
+ * 
+ * 삭제 예정
+ *
+ */
+
 @RestController
 public class PublicDataDisasterController {
 	

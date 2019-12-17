@@ -32,13 +32,13 @@ public class BactchConfig {
 	public StepBuilderFactory stepBuilderFactory;
 
 	@Bean
-	public Job processJob() {
-		return jobBuilderFactory.get("simple-job").start(simpleStep1()).listener(listener()).build();
+	public Job environmentJob() {
+		return jobBuilderFactory.get("environment-job").start(environmentStep()).listener(listener()).build();
 	}
 
 	@Bean
-	public Step simpleStep1() {
-		return stepBuilderFactory.get("simple-step").<String, List<PublicDataEnvironment>>chunk(20)
+	public Step environmentStep() {
+		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(20)
 				.reader(batchReaderStep()).processor(batchProcessorStep()).writer(batchWriterStep()).build();
 	}
 

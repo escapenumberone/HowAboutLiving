@@ -28,7 +28,7 @@ public class BatchWriter implements ItemWriter<List<PublicDataEnvironment>>{
 	}
 	
 	private void publicDataEnvironmentDelete() {
-		eDao.deletePublicDataEnvironment(); // 데이터 삭제
+		eDao.deletePublicDataEnvironment(); // 데이터 전부 삭제
 		eDao.autoIncrementReset(); // auto increment 리셋
 	}
 }

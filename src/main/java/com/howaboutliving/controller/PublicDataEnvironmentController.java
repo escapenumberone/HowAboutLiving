@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.howaboutliving.service.PublicDataEnvironmentService;
 
+/**
+ * 
+ * 삭제 예정
+ *
+ */
+
 @RestController
 public class PublicDataEnvironmentController {
 	

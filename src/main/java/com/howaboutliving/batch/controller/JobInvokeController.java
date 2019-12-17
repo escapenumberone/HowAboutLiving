@@ -18,7 +18,7 @@ public class JobInvokeController {
 	JobLauncher jobLauncher;
 	
 	@Autowired
-	Job processJob;
+	Job environmentJob;
 	
 	@Scheduled(cron = "0 0 */1 * * *")  // 매시 0분 0초에 실행
 	public void publicDataEnvironmentBatch() {
@@ -26,9 +26,8 @@ public class JobInvokeController {
 		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 		.toJobParameters();
 		try {
-			jobLauncher.run(processJob, jobParameters);
+			jobLauncher.run(environmentJob, jobParameters);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

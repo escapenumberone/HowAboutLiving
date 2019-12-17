@@ -27,7 +27,7 @@ public class BatchReader implements ItemReader<String> {
 
 	public String getSidoEnvironmentStr(String sidoName) throws InterruptedException {
 
-		RestTemplate restTemplate = new RestTemplate(); // RestTemplate 사용 피드백 적용
+		RestTemplate restTemplate = new RestTemplate(); // RestTemplate 사용 (피드백 적용)
 		String sidoEnvironmentURL = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?ServiceKey=T9ukDjLAYhGMGK%2FKeH7khfgFEnCHXfYhuHx6GkQIaDpMKFQ4E6sDm%2Bb8aYtmcibG1s8Auk%2BzauoNOZN2HDnRBQ%3D%3D"
 				+ "&numOfRows=" + NUMOFROWS + "&pageNo=1" + "&sidoName=" + sidoName + "&_returnType=json";
 		URI uri;
