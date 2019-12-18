@@ -9,7 +9,7 @@
           <div class="container-fluid mt-4">
             <Header />
             <Emotion/>
-            <Example />
+            <!-- <Example /> -->
           </div>
         </div>
         <Footer />
