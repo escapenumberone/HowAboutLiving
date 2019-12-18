@@ -18,7 +18,7 @@ public class PublicDataDisasterController {
 	@Autowired
 	PublicDataDisasterService dService;
 
-	@RequestMapping("/")
+	@RequestMapping("/d")
 	String home() {
 		return "Hello World!";
 	}
