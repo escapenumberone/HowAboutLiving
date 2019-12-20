@@ -5,11 +5,11 @@
       <SideBar />
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
-          <TopBar />
+          <TopBar :currentLocation="whereAmI" />
           <div class="container-fluid mt-4">
             <Header />
             <Emotion/>
-            <Example />
+            <!-- <Example /> -->
           </div>
         </div>
         <Footer />
@@ -46,7 +46,8 @@ export default {
       locInfo : {
         latitude : 0,
         longitude : 0
-      }
+      },
+      whereAmI: ""
     }
   },
   
@@ -67,6 +68,7 @@ export default {
     },
 
     fetchRerverseGeocoding : function() {
+      var temp = this;
       axios({
         methos : 'GET',
         url : 'http://localhost:8080/geocoding',
@@ -76,6 +78,7 @@ export default {
         }
       }).then((response) => {
         console.log(response.data);
+        temp.whereAmI = response.data;
       }).catch((error) => {
         console.log("ERROR 발생");
       })

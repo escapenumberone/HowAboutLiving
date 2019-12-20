@@ -4,43 +4,43 @@ public class PublicDataEnvironment {
 	private int id;
 	private String stationName;
 	private String dataTime;
-	private String khaiValue;
-	private String so2Value;
-	private String coValue;
-	private String o3Value;
-	private String no2Value;
-	private String pm10Value;
-	private String pm25Value;
-	private String khaiGrade;
-	private String so2Grade;
-	private String coGrade;
-	private String o3Grade;
-	private String no2Grade;
-	private String pm10Grade;
-	private String pm25Grade;
+	private String all_value;
+	private String so2_value;
+	private String co_value;
+	private String o3_value;
+	private String no2_value;
+	private String finedust_value;
+	private String ultrafinedust_value;
+	private String all_grade;
+	private String so2_grade;
+	private String co_grade;
+	private String o3_grade;
+	private String no2_grade;
+	private String finedust_grade;
+	private String ultrafinedust_grade;
 
-	public PublicDataEnvironment(int id, String stationName, String dataTime, String khaiValue,
-			String so2Value, String coValue, String o3Value, String no2Value, String pm10Value, String pm25Value,
-			String khaiGrade, String so2Grade, String coGrade, String o3Grade, String no2Grade, String pm10Grade,
-			String pm25Grade) {
+	public PublicDataEnvironment(int id, String stationName, String dataTime, String all_value, String so2_value,
+			String co_value, String o3_value, String no2_value, String finedust_value, String ultrafinedust_value,
+			String all_grade, String so2_grade, String co_grade, String o3_grade, String no2_grade,
+			String finedust_grade, String ultrafinedust_grade) {
 		super();
 		this.id = id;
 		this.stationName = stationName;
 		this.dataTime = dataTime;
-		this.khaiValue = khaiValue;
-		this.so2Value = so2Value;
-		this.coValue = coValue;
-		this.o3Value = o3Value;
-		this.no2Value = no2Value;
-		this.pm10Value = pm10Value;
-		this.pm25Value = pm25Value;
-		this.khaiGrade = khaiGrade;
-		this.so2Grade = so2Grade;
-		this.coGrade = coGrade;
-		this.o3Grade = o3Grade;
-		this.no2Grade = no2Grade;
-		this.pm10Grade = pm10Grade;
-		this.pm25Grade = pm25Grade;
+		this.all_value = all_value;
+		this.so2_value = so2_value;
+		this.co_value = co_value;
+		this.o3_value = o3_value;
+		this.no2_value = no2_value;
+		this.finedust_value = finedust_value;
+		this.ultrafinedust_value = ultrafinedust_value;
+		this.all_grade = all_grade;
+		this.so2_grade = so2_grade;
+		this.co_grade = co_grade;
+		this.o3_grade = o3_grade;
+		this.no2_grade = no2_grade;
+		this.finedust_grade = finedust_grade;
+		this.ultrafinedust_grade = ultrafinedust_grade;
 	}
 
 	public int getId() {
@@ -67,126 +67,126 @@ public class PublicDataEnvironment {
 		this.dataTime = dataTime;
 	}
 
-	public String getKhaiValue() {
-		return khaiValue;
+	public String getAll_value() {
+		return all_value;
 	}
 
-	public void setKhaiValue(String khaiValue) {
-		this.khaiValue = khaiValue;
+	public void setAll_value(String all_value) {
+		this.all_value = all_value;
 	}
 
-	public String getSo2Value() {
-		return so2Value;
+	public String getSo2_value() {
+		return so2_value;
 	}
 
-	public void setSo2Value(String so2Value) {
-		this.so2Value = so2Value;
+	public void setSo2_value(String so2_value) {
+		this.so2_value = so2_value;
 	}
 
-	public String getCoValue() {
-		return coValue;
+	public String getCo_value() {
+		return co_value;
 	}
 
-	public void setCoValue(String coValue) {
-		this.coValue = coValue;
+	public void setCo_value(String co_value) {
+		this.co_value = co_value;
 	}
 
-	public String getO3Value() {
-		return o3Value;
+	public String getO3_value() {
+		return o3_value;
 	}
 
-	public void setO3Value(String o3Value) {
-		this.o3Value = o3Value;
+	public void setO3_value(String o3_value) {
+		this.o3_value = o3_value;
 	}
 
-	public String getNo2Value() {
-		return no2Value;
+	public String getNo2_value() {
+		return no2_value;
 	}
 
-	public void setNo2Value(String no2Value) {
-		this.no2Value = no2Value;
+	public void setNo2_value(String no2_value) {
+		this.no2_value = no2_value;
 	}
 
-	public String getPm10Value() {
-		return pm10Value;
+	public String getFinedust_value() {
+		return finedust_value;
 	}
 
-	public void setPm10Value(String pm10Value) {
-		this.pm10Value = pm10Value;
+	public void setFinedust_value(String finedust_value) {
+		this.finedust_value = finedust_value;
 	}
 
-	public String getPm25Value() {
-		return pm25Value;
+	public String getUltrafinedust_value() {
+		return ultrafinedust_value;
 	}
 
-	public void setPm25Value(String pm25Value) {
-		this.pm25Value = pm25Value;
+	public void setUltrafinedust_value(String ultrafinedust_value) {
+		this.ultrafinedust_value = ultrafinedust_value;
 	}
 
-	public String getKhaiGrade() {
-		return khaiGrade;
+	public String getAll_grade() {
+		return all_grade;
 	}
 
-	public void setKhaiGrade(String khaiGrade) {
-		this.khaiGrade = khaiGrade;
+	public void setAll_grade(String all_grade) {
+		this.all_grade = all_grade;
 	}
 
-	public String getSo2Grade() {
-		return so2Grade;
+	public String getSo2_grade() {
+		return so2_grade;
 	}
 
-	public void setSo2Grade(String so2Grade) {
-		this.so2Grade = so2Grade;
+	public void setSo2_grade(String so2_grade) {
+		this.so2_grade = so2_grade;
 	}
 
-	public String getCoGrade() {
-		return coGrade;
+	public String getCo_grade() {
+		return co_grade;
 	}
 
-	public void setCoGrade(String coGrade) {
-		this.coGrade = coGrade;
+	public void setCo_grade(String co_grade) {
+		this.co_grade = co_grade;
 	}
 
-	public String getO3Grade() {
-		return o3Grade;
+	public String getO3_grade() {
+		return o3_grade;
 	}
 
-	public void setO3Grade(String o3Grade) {
-		this.o3Grade = o3Grade;
+	public void setO3_grade(String o3_grade) {
+		this.o3_grade = o3_grade;
 	}
 
-	public String getNo2Grade() {
-		return no2Grade;
+	public String getNo2_grade() {
+		return no2_grade;
 	}
 
-	public void setNo2Grade(String no2Grade) {
-		this.no2Grade = no2Grade;
+	public void setNo2_grade(String no2_grade) {
+		this.no2_grade = no2_grade;
 	}
 
-	public String getPm10Grade() {
-		return pm10Grade;
+	public String getFinedust_grade() {
+		return finedust_grade;
 	}
 
-	public void setPm10Grade(String pm10Grade) {
-		this.pm10Grade = pm10Grade;
+	public void setFinedust_grade(String finedust_grade) {
+		this.finedust_grade = finedust_grade;
 	}
 
-	public String getPm25Grade() {
-		return pm25Grade;
+	public String getUltrafinedust_grade() {
+		return ultrafinedust_grade;
 	}
 
-	public void setPm25Grade(String pm25Grade) {
-		this.pm25Grade = pm25Grade;
+	public void setUltrafinedust_grade(String ultrafinedust_grade) {
+		this.ultrafinedust_grade = ultrafinedust_grade;
 	}
 
 	@Override
 	public String toString() {
-		return "PublicDataEnvironment [id=" + id + ", stationName=" + stationName
-				+ ", dataTime=" + dataTime + ", khaiValue=" + khaiValue + ", so2Value=" + so2Value + ", coValue="
-				+ coValue + ", o3Value=" + o3Value + ", no2Value=" + no2Value + ", pm10Value=" + pm10Value
-				+ ", pm25Value=" + pm25Value + ", khaiGrade=" + khaiGrade + ", so2Grade=" + so2Grade + ", coGrade="
-				+ coGrade + ", o3Grade=" + o3Grade + ", no2Grade=" + no2Grade + ", pm10Grade=" + pm10Grade
-				+ ", pm25Grade=" + pm25Grade + "]";
+		return "PublicDataEnvironment [id=" + id + ", stationName=" + stationName + ", dataTime=" + dataTime
+				+ ", all_value=" + all_value + ", so2_value=" + so2_value + ", co_value=" + co_value + ", o3_value="
+				+ o3_value + ", no2_value=" + no2_value + ", finedust_value=" + finedust_value
+				+ ", ultrafinedust_value=" + ultrafinedust_value + ", all_grade=" + all_grade + ", so2_grade="
+				+ so2_grade + ", co_grade=" + co_grade + ", o3_grade=" + o3_grade + ", no2_grade=" + no2_grade
+				+ ", finedust_grade=" + finedust_grade + ", ultrafinedust_grade=" + ultrafinedust_grade + "]";
 	}
 
 }

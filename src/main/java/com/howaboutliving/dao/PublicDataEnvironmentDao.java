@@ -7,6 +7,6 @@ import com.howaboutliving.dto.PublicDataEnvironment;
 @Repository
 public interface PublicDataEnvironmentDao {
 	void insertPublicDataEnvironment(PublicDataEnvironment publicDataEnvironment);
-	void deletePublicDataEnvironment();
-	void autoIncrementReset();
+//	void deletePublicDataEnvironment();
+//	void autoIncrementReset();
 }
