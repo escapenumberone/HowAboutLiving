@@ -8,5 +8,5 @@ import com.howaboutliving.dto.PublicDataDisaster;
 
 @Repository
 public interface PublicDataDisasterDao {
-	void save(List<PublicDataDisaster> list);
+	void insertPublicDataDisaster(List<PublicDataDisaster> list);
 }

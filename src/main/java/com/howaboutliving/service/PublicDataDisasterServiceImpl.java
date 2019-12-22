@@ -95,7 +95,7 @@ public class PublicDataDisasterServiceImpl implements PublicDataDisasterService{
 		**/
 		
 		try {
-			int pageNo = 8;
+			int pageNo = 1;
 			
 			// HTTP 연결 통신하는 템플릿이 스프링에 있음
 			URL url;
@@ -106,7 +106,7 @@ public class PublicDataDisasterServiceImpl implements PublicDataDisasterService{
 				conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Content-type", "application/json");
-				conn.setReadTimeout(20000); // 넉넉한 시간을 기다려보고
+				conn.setReadTimeout(40000); // 넉넉한 시간을 기다려보고
 				
 				System.out.println("URL : " + urlString);
 				System.out.println("Response code: " + conn.getResponseCode());
@@ -166,7 +166,7 @@ public class PublicDataDisasterServiceImpl implements PublicDataDisasterService{
 					item.get("dsstrRiskGrad").getAsString(), item.get("appnDate").getAsString(),
 					item.get("infoModDate").getAsString(), item.get("relisDate").getAsString()));
 		}
-		dDao.save(list);
+//		dDao.save(list);
 		return true;
 	}
 

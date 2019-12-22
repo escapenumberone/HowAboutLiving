@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 
 import com.howaboutliving.dao.PublicDataEnvironmentDao;
 import com.howaboutliving.dto.PublicDataEnvironment;
-import com.howaboutliving.service.PublicDataDisasterService;
 
-@Configuration
-public class BatchWriter implements ItemWriter<List<PublicDataEnvironment>>{
+public class EnvironmentWriter implements ItemWriter<List<PublicDataEnvironment>>{
 
 	@Autowired
 	PublicDataEnvironmentDao eDao;

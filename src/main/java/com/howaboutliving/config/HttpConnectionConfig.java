@@ -12,9 +12,9 @@ public class HttpConnectionConfig {
 	@Bean
     public RestTemplate getCustomRestTemplate(){
         HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        httpRequestFactory.setReadTimeout(30000); // 20초 기다림
+        httpRequestFactory.setReadTimeout(60000); // 읽기 시간초과, ms
         HttpClient httpClient = HttpClientBuilder.create()
-                .setMaxConnTotal(200) // 커넥션 풀 갯수
+                .setMaxConnTotal(20) // 커넥션 풀 갯수
                 .setMaxConnPerRoute(20) // 한 IP당 연결 제한 갯수
                 .build();
         httpRequestFactory.setHttpClient(httpClient);
