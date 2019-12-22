@@ -1,27 +1,44 @@
 <template>
   <div id="app">
     <router-view/>
-    <Header/>
-    <Emotion/>
-    <Footer/>
+    <div id="wrapper">
+      <SideBar />
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <TopBar :currentLocation="whereAmI" />
+          <div class="container-fluid mt-4">
+            <Header />
+            <Emotion/>
+            <!-- <Example /> -->
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </div>
+    <ScrollToTop />
   </div>
 </template>
 
 <script>
+import SideBar from './components/SideBar';
+import TopBar from './components/TopBar';
 import Header from './components/Header';
-import Smile from './components/Smile';
-import Statistics from './components/Statistics';
+import Example from './components/Example';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Emotion from './components/Emotion';
 import axios from 'axios';
 
 export default {
   name: 'App',
   components: {
+    SideBar,
+    TopBar,
     Header,
+    Example,
+    Footer,
+    ScrollToTop,
     Emotion,
-    Statistics,
-    Footer
   },
   data() {
     return {
@@ -29,7 +46,8 @@ export default {
       locInfo : {
         latitude : 0,
         longitude : 0
-      }
+      },
+      whereAmI: ""
     }
   },
   
@@ -50,6 +68,7 @@ export default {
     },
 
     fetchRerverseGeocoding : function() {
+      var temp = this;
       axios({
         methos : 'GET',
         url : 'http://localhost:8080/geocoding',
@@ -59,6 +78,7 @@ export default {
         }
       }).then((response) => {
         console.log(response.data);
+        temp.whereAmI = response.data;
       }).catch((error) => {
         console.log("ERROR 발생");
       })
@@ -77,14 +97,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
-}
-
-#fixedFooter{
-    position:fixed;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-    text-align: center;
 }
 
 </style>

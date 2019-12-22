@@ -15,7 +15,7 @@ public class EnvironmentWriter implements ItemWriter<List<PublicDataEnvironment>
 	
 	@Override
 	public void write(List<? extends List<PublicDataEnvironment>> items) throws Exception {
-		publicDataEnvironmentDelete();
+//		publicDataEnvironmentDelete();
 		for (List<PublicDataEnvironment> list : items) {
 			for (int i = 0; i < list.size(); i++) {
 				eDao.insertPublicDataEnvironment(list.get(i));
@@ -25,7 +25,7 @@ public class EnvironmentWriter implements ItemWriter<List<PublicDataEnvironment>
 	}
 	
 	private void publicDataEnvironmentDelete() {
-		eDao.deletePublicDataEnvironment(); // 데이터 전부 삭제
-		eDao.autoIncrementReset(); // auto increment 리셋
+//		eDao.deletePublicDataEnvironment(); // 데이터 전부 삭제
+//		eDao.autoIncrementReset(); // auto increment 리셋
 	}
 }
