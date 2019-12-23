@@ -18,7 +18,7 @@ public class EnvironmentWriter implements ItemWriter<List<PublicDataEnvironment>
 //		publicDataEnvironmentDelete();
 		for (List<PublicDataEnvironment> list : items) {
 			for (int i = 0; i < list.size(); i++) {
-				eDao.insertPublicDataEnvironment(list.get(i));
+//				eDao.insertPublicDataEnvironment(list.get(i));
 			}
 		}
 		System.out.println("환경 데이터 업데이트 완료");

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableScheduling
+@RestController
 public class JobInvokeController {
 	
 	@Autowired
@@ -25,6 +26,7 @@ public class JobInvokeController {
 	Job disasterJob;
 	
 //	@Scheduled(cron = "0 0 */1 * * *")  // 매시 0분 0초에 실행(1시간 주기로 업데이트)
+	@RequestMapping("/test1")
 	public void publicDataEnvironmentBatch() {
 		System.out.println("배치 잡 시작");
 		System.out.println("환경 데이터 업데이트 시작");
@@ -33,7 +35,8 @@ public class JobInvokeController {
 		try {
 			jobLauncher.run(environmentJob, jobParameters);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("초과남");
+//			e.printStackTrace();
 		}
 	}
 

@@ -15,8 +15,13 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.retry.backoff.BackOffPolicy;
+import org.springframework.retry.backoff.FixedBackOffPolicy;
+import org.springframework.retry.backoff.ThreadWaitSleeper;
 
 import com.howaboutliving.batch.exception.MyException;
+import com.howaboutliving.batch.exception.MyTimeoutException;
+import com.howaboutliving.batch.listener.EnvironmentListener;
 import com.howaboutliving.batch.listener.JobCompletionListener;
 import com.howaboutliving.batch.processor.DisasterProcessor;
 import com.howaboutliving.batch.processor.EnvironmentProcessor;
@@ -49,14 +54,14 @@ public class BactchConfig {
 	
 	@Bean
 	public Step environmentStep() {
-		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(20)
-				.reader(envrionmentReader()).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
+		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(50)
+				.reader(envrionmentReader()).listener(environmentListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
 	}
-	
+
 	@Bean
 	public Step disastertStep() {
 		return stepBuilderFactory.get("disaster-step").<String, List<PublicDataDisaster>>chunk(20)
-				.reader(disasterReader()).faultTolerant().skipLimit(3).skip(MyException.class).processor(disasterProcessor()).writer(disasterWriter()).build();
+				.reader(disasterReader()).listener(environmentListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(disasterProcessor()).writer(disasterWriter()).build();
 	}
 	
 	@Bean
@@ -92,6 +97,11 @@ public class BactchConfig {
 	@Bean
 	public JobExecutionListener listener() {
 		return new JobCompletionListener();
+	}
+	
+	@Bean
+	public EnvironmentListener environmentListener() {
+		return new EnvironmentListener();
 	}
 
 }

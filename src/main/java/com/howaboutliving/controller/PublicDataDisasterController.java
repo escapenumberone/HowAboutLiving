@@ -64,6 +64,12 @@ public class PublicDataDisasterController {
 		return reverseGeocodingParse(responseString.getBody());
 	}
 
+	@RequestMapping("thread")
+	String thread() {
+		System.out.println("Controller쪽 thread 이름 : " + Thread.currentThread().getName());
+		return "im thread";
+	}
+	
 	@RequestMapping("/save")
 	String save() {
 		dService.save();

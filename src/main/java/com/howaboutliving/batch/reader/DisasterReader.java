@@ -18,7 +18,8 @@ import com.howaboutliving.batch.exception.MyException;
 
 public class DisasterReader implements ItemReader<String> {
 	private int pageNo = 1;
-
+	private int cnt = 1;
+	
 	@Override
 	public String read() throws MyException {
 
@@ -30,18 +31,26 @@ public class DisasterReader implements ItemReader<String> {
 //			}
 //			return readData;
 //		}
+		System.out.println();
 		System.out.println("리드 실행 됨");
+
 		int a = 1;
 		int b = 1;
-		if (a == b)
+		if (a == b && cnt <= 3) {
+			cnt++;
 			throw new MyException();
+		}
+//		else if(a == b && cnt >= 4) {
+//			System.out.println("횟수 초과요");
+//		}
+		System.out.println("익셉션 지나감");
 		// 데이터를 읽어야 해.
 		// 근데 데이터를 못받아왔네 ? (Exception을 받았어, 타임아웃이던, 00코드던)
 		// 못받아왔을때 핸들링을 해줘야 해(재시도 하게 끔)
 
 		return null;
-	}
 
+	}
 	private boolean checkData(String readData) {
 		JsonObject obj = JsonParser.parseString(readData).getAsJsonObject();
 		JsonObject parse_response = (JsonObject) obj.get("response");
