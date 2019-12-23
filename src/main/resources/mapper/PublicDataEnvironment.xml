@@ -17,4 +17,30 @@
 	<update id="autoIncrementReset">
 		ALTER TABLE environment AUTO_INCREMENT = 1
 	</update>
+	
+	
+	<select id="selectDaliyAvgEnvironment" resultMap="EnvironmentDailyAvg">
+		SELECT SUBSTRING_INDEX(dataTime, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade 
+		FROM environment GROUP BY station_name, day_date ORDER BY station_name ASC, day_date DESC
+	</select>
+	
+<!-- 	<insert id="insertDailyAvgEnvironment" parameterType="com.howaboutliving.dto.EnvironmentDailyAvg"> -->
+<!-- 		INSERT INTO environment_test(id, day_date, station_name, all_avg_value, all_avg_grade) -->
+<!-- 		VALUES(0, #{day_date}, #{station_name},#{all_avg_value},#{all_avg_grade}) -->
+<!-- 	</insert> -->
+	
+<!-- 	<resultMap type="EnvironmentDailyAvg" id="environmentDailyAvg"> -->
+<!-- 		<id column="id" property="id" /> -->
+<!-- 		<result column="day_date" property="day_date"/> -->
+<!-- 		<result column="station_name" property="station_name"/> -->
+<!-- 		<result column="all_avg_value" property="all_avg_value"/> -->
+<!-- 		<result column="all_avg_grade" property="all_avg_grade"/> -->
+<!-- 	</resultMap> -->
+	<insert id="insertPublicDataDisaster" parameterType="java.util.List">
+		INSERT INTO environment_test
+		(id, day_date, station_name, all_avg_value, all_avg_grade) VALUES
+		<foreach item="item" index="index" collection="list" separator=",">
+		(0, #{item.day_date}, #{item.station_name}, #{item.all_avg_value}, #{item.all_avg_grade})
+		</foreach>
+	</insert>
 </mapper>

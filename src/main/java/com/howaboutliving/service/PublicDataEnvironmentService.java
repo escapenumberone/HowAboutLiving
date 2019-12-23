@@ -1,9 +1,12 @@
 package com.howaboutliving.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Service;
+
+import com.howaboutliving.dto.EnvironmentDailyAvg;
 
 @Service
 public interface PublicDataEnvironmentService {
@@ -12,4 +15,8 @@ public interface PublicDataEnvironmentService {
 	String getSidoEnvironmentStr(String sidoName) throws IOException;
 
 	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException;
+
+	List<EnvironmentDailyAvg> selectDaliyAvgEnvironment();
+
+	void insertDaliyAvgEnvironment(List<EnvironmentDailyAvg> environementDailyAvgList);
 }

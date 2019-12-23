@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.mail.internet.MimeMessage;
@@ -20,6 +21,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.howaboutliving.dao.PublicDataEnvironmentDao;
+import com.howaboutliving.dto.EnvironmentDailyAvg;
 import com.howaboutliving.dto.PublicDataEnvironment;
 
 @Service
@@ -85,8 +87,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 
 	@Override
 	public void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException {
-		errAlarmToDev("보낼 String을 여기에 쓰세요");
-		System.out.println("작업 성공?");
+		alarmToDev("메세지 보낼 String을 여기에 쓰세요");
 		for (int i = 0; i < sidoList.length; i++) {
 			if (setSidoEnvironment(sidoList[i]).equals("")) {
 				System.out.println(i + "번 째 데이터가 성공적으로 전달되었습니다!");
@@ -102,8 +103,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 
 		String sidoStr = "";
 		// 경로를 한 번 지정해주고 바꾸면 안됨.
-		File file = new File(
-				"C:\\Users\\user\\Documents\\workspace-spring-tool-suite-4-4.4.2.RELEASE\\howaboutliving\\src\\main\\resources\\sidoTxtFile.txt");
+		File file = new File("C:\\Users\\niboh\\Desktop\\git\\HowAboutLiving\\src\\main\\resources\\sidoTxtFile.txt");
 		Scanner sc;
 		try {
 			sc = new Scanner(file);
@@ -118,7 +118,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		return sidoStr;
 	}
 
-	public void errAlarmToDev(String str) {
+	public void alarmToDev(String str) {
 
 		String from = "naeb2627@gmail.com";
 		String tomail = "aegis1920@gmail.com"; // 받는 사람 이메일
@@ -128,7 +128,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-			
+
 			messageHelper.setFrom(from); // 보내는사람
 			messageHelper.setTo(tomail); // 받는사람 이메일
 			messageHelper.setSubject(subject); // 메일 제목
@@ -138,7 +138,21 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+	}
 
+	@Override
+	public List<EnvironmentDailyAvg> selectDaliyAvgEnvironment() {
+		return eDao.selectDaliyAvgEnvironment();
+	}
+
+	// 걍 처음에 List에 넣고 안에서 해도 상관없음.
+	@Override
+	public void insertDaliyAvgEnvironment(List<EnvironmentDailyAvg> environementDailyAvgList) {
+		eDao.insertDailyAvgEnvironment(environementDailyAvgList);
+	}
+
+	public void addCurrentOneDailyAvgEnvironment() {
+		insertDaliyAvgEnvironment(selectDaliyAvgEnvironment());
 	}
 
 }
