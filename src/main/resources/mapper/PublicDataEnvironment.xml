@@ -4,7 +4,7 @@
 	namespace="com.howaboutliving.dao.PublicDataEnvironmentDao">
 	<insert id="insertPublicDataEnvironment"
 		parameterType="com.howaboutliving.dto.PublicDataEnvironment">
-		INSERT INTO environment(id, stationName,
+		INSERT INTO environment_test(id, stationName,
 		dataTime,all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultrafinedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultrafinedust_grade)
 		VALUES(0, #{stationName}, #{dataTime},#{all_value},#{so2_value},#{co_value},#{o3_value},#{no2_value},#{finedust_value},#{ultrafinedust_value},#{all_grade},#{so2_grade},#{co_grade},#{o3_grade},#{no2_grade},#{finedust_grade},#{ultrafinedust_grade})
 	</insert>
