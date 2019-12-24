@@ -62,7 +62,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 					parse_obj.get("no2Grade").getAsString(), parse_obj.get("pm10Grade").getAsString(),
 					parse_obj.get("pm25Grade").getAsString());
 
-			eDao.insertPublicDataEnvironment(publicDataEnvironment);
+//			eDao.insertPublicDataEnvironment(publicDataEnvironment);
 
 		}
 
@@ -92,7 +92,6 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 
 	@Override
 	public void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException {
-		alarmToDev("메세지 보낼 String을 여기에 쓰세요");
 		for (int i = 0; i < sidoList.length; i++) {
 			if (setSidoEnvironment(sidoList[i]).equals("")) {
 				System.out.println(i + "번 째 데이터가 성공적으로 전달되었습니다!");
@@ -126,8 +125,8 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		return sidoStr;
 	}
 
+	@Override
 	public void alarmToDev(String str) {
-
 		String from = "naeb2627@gmail.com";
 		String tomail = "aegis1920@gmail.com"; // 받는 사람 이메일
 		String subject = "오류가 발생했습니다.";
@@ -168,5 +167,14 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		return eDao.selectRealtimeEnvironmentByStationName(stationName);
 	}
 
+	public void insertPublicDataEnvironmentAvg() {
+		eDao.insertPublicDataEnvironmentAvg(nowDaysHourStr());
+	}
+	
+	public String nowDaysHourStr() {
+		LocalDateTime now = LocalDateTime.now();
+		String nowDaysHour = now.format(DateTimeFormatter.ofPattern("HH:00"));
+		return nowDaysHour;
+	}
 
 }

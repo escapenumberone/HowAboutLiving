@@ -20,4 +20,7 @@ public interface PublicDataEnvironmentDao {
 	void insertOneDailyAvgEnvironment(String oneDaysAgo);
 	
 	List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName);
+	
+	void insertPublicDataEnvironment(String str);
+	void insertPublicDataEnvironmentAvg(String str);
 }

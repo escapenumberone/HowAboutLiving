@@ -22,4 +22,8 @@ public interface PublicDataEnvironmentService {
 	void insertOneDailyAvgEnvironment();
 
 	List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName);
+
+	void insertPublicDataEnvironmentAvg();
+
+	void alarmToDev(String string);
 }

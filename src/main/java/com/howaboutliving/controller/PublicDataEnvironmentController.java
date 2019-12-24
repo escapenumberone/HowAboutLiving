@@ -52,4 +52,10 @@ public class PublicDataEnvironmentController {
 		mm.put("resultCode", "204");
 		return new ResponseEntity<ModelMap>(mm, HttpStatus.NO_CONTENT);
 	}
+	
+	@RequestMapping("/nowdays")
+	public String nowDays() {
+		eService.insertPublicDataEnvironmentAvg();
+		return "현재시간";
+	}
 }

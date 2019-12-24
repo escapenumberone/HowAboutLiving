@@ -63,7 +63,7 @@ public class PublicDataDisasterController {
 		
 		return reverseGeocodingParse(responseString.getBody());
 	}
-
+	
 	@RequestMapping("/save")
 	String save() {
 		dService.save();
