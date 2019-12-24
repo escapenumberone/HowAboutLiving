@@ -45,4 +45,10 @@ public class PublicDataEnvironmentController {
 		mm.put("list", environmentDailyAvgList);
 		return mm;
 	}
+	
+	@RequestMapping("/oneDailyTest")
+	public String oneDailyTest() {
+		eService.insertOneDailyAvgEnvironment();
+		return "레스트 템플릿 테스트";
+	}
 }

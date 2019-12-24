@@ -4,9 +4,9 @@
 	namespace="com.howaboutliving.dao.PublicDataEnvironmentDao">
 	<insert id="insertPublicDataEnvironment"
 		parameterType="com.howaboutliving.dto.PublicDataEnvironment">
-		INSERT INTO environment_test(id, stationName,
-		dataTime,all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultrafinedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultrafinedust_grade)
-		VALUES(0, #{stationName}, #{dataTime},#{all_value},#{so2_value},#{co_value},#{o3_value},#{no2_value},#{finedust_value},#{ultrafinedust_value},#{all_grade},#{so2_grade},#{co_grade},#{o3_grade},#{no2_grade},#{finedust_grade},#{ultrafinedust_grade})
+		INSERT INTO environment(id, 
+		data_time, station_name, all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultra_finedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultra_finedust_grade)
+		VALUES(0, #{data_time}, #{station_name}, #{all_value},#{so2_value},#{co_value},#{o3_value},#{no2_value},#{finedust_value},#{ultra_finedust_value},#{all_grade},#{so2_grade},#{co_grade},#{o3_grade},#{no2_grade},#{finedust_grade},#{ultra_finedust_grade})
 	</insert>
 
 	<delete id="deletePublicDataEnvironment"
@@ -19,10 +19,10 @@
 	</update>
 	
 	
-	<select id="selectDaliyAvgEnvironment" resultMap="EnvironmentDailyAvg">
-		SELECT SUBSTRING_INDEX(dataTime, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade 
-		FROM environment GROUP BY station_name, day_date ORDER BY station_name ASC, day_date DESC
-	</select>
+<!-- 	<select id="selectDaliyAvgEnvironment" resultMap="EnvironmentDailyAvg"> -->
+<!-- 		SELECT SUBSTRING_INDEX(dataTime, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade  -->
+<!-- 		FROM environment GROUP BY station_name, day_date ORDER BY station_name ASC, day_date DESC -->
+<!-- 	</select> -->
 	
 <!-- 	<insert id="insertDailyAvgEnvironment" parameterType="com.howaboutliving.dto.EnvironmentDailyAvg"> -->
 <!-- 		INSERT INTO environment_test(id, day_date, station_name, all_avg_value, all_avg_grade) -->
@@ -36,11 +36,16 @@
 <!-- 		<result column="all_avg_value" property="all_avg_value"/> -->
 <!-- 		<result column="all_avg_grade" property="all_avg_grade"/> -->
 <!-- 	</resultMap> -->
-	<insert id="insertPublicDataDisaster" parameterType="java.util.List">
-		INSERT INTO environment_test
-		(id, day_date, station_name, all_avg_value, all_avg_grade) VALUES
-		<foreach item="item" index="index" collection="list" separator=",">
-		(0, #{item.day_date}, #{item.station_name}, #{item.all_avg_value}, #{item.all_avg_grade})
-		</foreach>
+
+	<insert id="insertOneDailyAvgEnvironment" parameterType="String">
+		
+		INSERT INTO environment_daily_avg(day_date, station_name, all_avg_value, all_avg_grade)
+		(SELECT SUBSTRING_INDEX(data_time, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade
+		FROM environment 
+		GROUP BY station_name, day_date 
+		HAVING day_date=#{oneDaysAgo} 
+		ORDER BY station_name ASC, day_date DESC)
+		
 	</insert>
+	
 </mapper>

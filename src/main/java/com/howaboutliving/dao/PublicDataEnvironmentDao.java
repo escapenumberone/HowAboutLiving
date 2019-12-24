@@ -13,5 +13,6 @@ public interface PublicDataEnvironmentDao {
 //	void deletePublicDataEnvironment();
 //	void autoIncrementReset();
 	List<EnvironmentDailyAvg> selectDaliyAvgEnvironment();
-	void insertDailyAvgEnvironment(List<EnvironmentDailyAvg> environementDailyAvgList);
+	void insertOneDailyAvgEnvironment(String oneDaysAgo);
+	void hehe(String str);
 }

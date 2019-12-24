@@ -1,6 +1,5 @@
 package com.howaboutliving.batch.config;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.batch.core.Job;
@@ -12,6 +11,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +26,7 @@ import com.howaboutliving.batch.writer.DisasterWriter;
 import com.howaboutliving.batch.writer.EnvironmentWriter;
 import com.howaboutliving.dto.PublicDataDisaster;
 import com.howaboutliving.dto.PublicDataEnvironment;
+import com.howaboutliving.service.PublicDataEnvironmentService;
 
 @Configuration
 @EnableBatchProcessing
@@ -36,6 +37,9 @@ public class BactchConfig {
 
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
+	
+	@Autowired
+	public PublicDataEnvironmentService eService;
 
 	@Bean
 	public Job environmentJob() {
@@ -58,6 +62,22 @@ public class BactchConfig {
 		return stepBuilderFactory.get("disaster-step").<String, List<PublicDataDisaster>>chunk(20)
 				.reader(disasterReader()).faultTolerant().skipLimit(3).skip(MyException.class).processor(disasterProcessor()).writer(disasterWriter()).build();
 	}
+	
+	
+	@Bean
+	public Job environmentDailyAvgJob() {
+		return jobBuilderFactory.get("environmentDailyAvg-Job").start(environmentDailyAvgStep()).build();
+	}
+
+	@Bean
+	public Step environmentDailyAvgStep() {
+		return stepBuilderFactory.get("environmentDailyAvg-Step").tasklet((contribution, chunkContext) -> {
+			System.out.println("Start Avg");
+			eService.insertOneDailyAvgEnvironment();
+			return RepeatStatus.FINISHED;
+		}).build();
+	}
+	
 	
 	@Bean
 	ItemReader<String> envrionmentReader() {

@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,7 +29,8 @@ import com.howaboutliving.dto.PublicDataEnvironment;
 @Service
 public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentService {
 	private static final int NUMOFROWS = 10000;
-	private String sidoStr = readSidoTxt();
+//	private String sidoStr = readSidoTxt();
+	private String sidoStr = "fd,smd,f";
 	private String[] sidoList = sidoStr.split(",");
 
 	@Autowired
@@ -99,24 +102,24 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		}
 	}
 
-	public String readSidoTxt() {
-
-		String sidoStr = "";
-		// 경로를 한 번 지정해주고 바꾸면 안됨.
-		File file = new File("C:\\Users\\niboh\\Desktop\\git\\HowAboutLiving\\src\\main\\resources\\sidoTxtFile.txt");
-		Scanner sc;
-		try {
-			sc = new Scanner(file);
-			while (sc.hasNextLine()) {
-				sidoStr += sc.nextLine();
-			}
-			sc.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return sidoStr;
-	}
+//	public String readSidoTxt() {
+//
+//		String sidoStr = "";
+//		// 경로를 한 번 지정해주고 바꾸면 안됨.
+//		File file = new File("C:\\Users\\user\\Documents\\workspace-spring-tool-suite-4-4.4.2.RELEASE\\howaboutliving\\src\\main\\resources\\sidoTxtFile.txt");
+//		Scanner sc;
+//		try {
+//			sc = new Scanner(file);
+//			while (sc.hasNextLine()) {
+//				sidoStr += sc.nextLine();
+//			}
+//			sc.close();
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return sidoStr;
+//	}
 
 	public void alarmToDev(String str) {
 
@@ -141,18 +144,14 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 	}
 
 	@Override
-	public List<EnvironmentDailyAvg> selectDaliyAvgEnvironment() {
-		return eDao.selectDaliyAvgEnvironment();
+	public void insertOneDailyAvgEnvironment() {
+		eDao.insertOneDailyAvgEnvironment(oneDaysAgoStr());
 	}
 
-	// 걍 처음에 List에 넣고 안에서 해도 상관없음.
-	@Override
-	public void insertDaliyAvgEnvironment(List<EnvironmentDailyAvg> environementDailyAvgList) {
-		eDao.insertDailyAvgEnvironment(environementDailyAvgList);
+	public String oneDaysAgoStr() {
+		LocalDateTime now = LocalDateTime.now();
+		return now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 
-	public void addCurrentOneDailyAvgEnvironment() {
-		insertDaliyAvgEnvironment(selectDaliyAvgEnvironment());
-	}
 
 }

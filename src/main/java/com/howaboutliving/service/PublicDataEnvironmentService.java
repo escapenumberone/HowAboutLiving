@@ -16,7 +16,5 @@ public interface PublicDataEnvironmentService {
 
 	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException;
 
-	List<EnvironmentDailyAvg> selectDaliyAvgEnvironment();
-
-	void insertDaliyAvgEnvironment(List<EnvironmentDailyAvg> environementDailyAvgList);
+	void insertOneDailyAvgEnvironment();
 }
