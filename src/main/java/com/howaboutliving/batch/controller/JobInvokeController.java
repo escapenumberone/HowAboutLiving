@@ -35,15 +35,15 @@ public class JobInvokeController {
 		try {
 			jobLauncher.run(environmentJob, jobParameters);
 		} catch (Exception e) {
-			System.out.println("초과남");
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 
-	@RequestMapping("/excep")
+	
+	@Scheduled(cron = "0 0 0 */1 * *")  // 매일 0시 0분 0초에 실행(1일 주기로 업데이트)
 	public void publicDataDisasterBatch() {
 		System.out.println("배치 잡 시작");
-		System.out.println("테스트 시작");
+		System.out.println("재해 데이터 업데이트 시작");
 		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
 		.toJobParameters();
 		try {
@@ -52,18 +52,5 @@ public class JobInvokeController {
 			e.printStackTrace();
 		}
 	}
-	
-//	@Scheduled(cron = "0 0 0 */1 * *")  // 매일 0시 0분 0초에 실행(1일 주기로 업데이트)
-//	public void publicDataDisasterBatch() {
-//		System.out.println("배치 잡 시작");
-//		System.out.println("재해 데이터 업데이트 시작");
-//		JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
-//		.toJobParameters();
-//		try {
-//			jobLauncher.run(disasterJob, jobParameters);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 	
 }

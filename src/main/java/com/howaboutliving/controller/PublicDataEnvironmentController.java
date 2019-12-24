@@ -26,4 +26,10 @@ public class PublicDataEnvironmentController {
 		eService.insertPublicDataEnvironmentService();
 		return "레스트 템플릿 테스트";
 	}
+	
+	@RequestMapping("/nowdays")
+	public String nowDays() {
+		eService.insertPublicDataEnvironmentAvg();
+		return "현재시간";
+	}
 }

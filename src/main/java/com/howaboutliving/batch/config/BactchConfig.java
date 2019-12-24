@@ -22,7 +22,6 @@ import com.howaboutliving.batch.processor.DisasterProcessor;
 import com.howaboutliving.batch.processor.EnvironmentProcessor;
 import com.howaboutliving.batch.reader.DisasterReader;
 import com.howaboutliving.batch.reader.EnvironmentReader;
-import com.howaboutliving.batch.skip.mySkipPolicy;
 import com.howaboutliving.batch.writer.DisasterWriter;
 import com.howaboutliving.batch.writer.EnvironmentWriter;
 import com.howaboutliving.dto.PublicDataDisaster;
@@ -40,10 +39,7 @@ public class BactchConfig {
 
 	@Bean
 	public Job environmentJob() {
-		return jobBuilderFactory.get("environment-job")
-				.start(environmentStep())
-				.listener(listener())
-				.build();
+		return jobBuilderFactory.get("environment-job").start(environmentStep()).listener(listener()).build();
 	}
 	
 	@Bean
@@ -51,26 +47,12 @@ public class BactchConfig {
 		return jobBuilderFactory.get("disaster-job").start(disastertStep()).listener(listener()).build();
 	}
 	
-//	@Bean
-//	public Step environmentStep() {
-//		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(50)
-//				.reader(envrionmentReader()).faultTolerant().skipLimit(5).skip(ResourceAccessException.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
-//	}
-	
 	@Bean
 	public Step environmentStep() {
 		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(50)
 				.reader(envrionmentReader()).listener(environmentListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
 	}
 	
-//	@Bean
-//	public Step environmentStep() {
-//		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(50)
-//				.reader(envrionmentReader()).faultTolerant().skipPolicy(mySkipPolicy()).skip(Exception.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
-//	}
-	
-	
-
 	@Bean
 	public Step disastertStep() {
 		return stepBuilderFactory.get("disaster-step").<String, List<PublicDataDisaster>>chunk(20)
@@ -116,10 +98,4 @@ public class BactchConfig {
 	public EnvironmentListener environmentListener() {
 		return new EnvironmentListener();
 	}
-	
-	@Bean
-	public SkipPolicy mySkipPolicy() {
-		return new mySkipPolicy();
-	}
-
 }

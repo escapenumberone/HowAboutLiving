@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import javax.mail.internet.MimeMessage;
@@ -55,7 +57,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 					parse_obj.get("no2Grade").getAsString(), parse_obj.get("pm10Grade").getAsString(),
 					parse_obj.get("pm25Grade").getAsString());
 
-			eDao.insertPublicDataEnvironment(publicDataEnvironment);
+//			eDao.insertPublicDataEnvironment(publicDataEnvironment);
 
 		}
 
@@ -85,7 +87,6 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 
 	@Override
 	public void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException {
-		errAlarmToDev("보낼 String을 여기에 쓰세요");
 		System.out.println("작업 성공?");
 		for (int i = 0; i < sidoList.length; i++) {
 			if (setSidoEnvironment(sidoList[i]).equals("")) {
@@ -97,27 +98,8 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 			Thread.sleep(1000);
 		}
 	}
-
-	public String readSidoTxt() {
-
-		String sidoStr = "";
-		// 경로를 한 번 지정해주고 바꾸면 안됨.
-		File file = new File(
-				"C:\\intern_Project\\HowAboutLiving\\src\\main\\resources\\sidoTxtFile.txt");
-		Scanner sc;
-		try {
-			sc = new Scanner(file);
-			while (sc.hasNextLine()) {
-				sidoStr += sc.nextLine();
-			}
-			sc.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return sidoStr;
-	}
-
+	
+	@Override
 	public void errAlarmToDev(String str) {
 
 		String from = "naeb2627@gmail.com";
@@ -140,5 +122,38 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		}
 
 	}
+
+	@Override
+	public void insertPublicDataEnvironmentAvg() {
+		eDao.insertPublicDataEnvironmentAvg(nowDaysHourStr());
+	}
+	
+	public String nowDaysHourStr() {
+		LocalDateTime now = LocalDateTime.now();
+		String nowDaysHour = now.format(DateTimeFormatter.ofPattern("HH:00"));
+		return nowDaysHour;
+	}
+
+	public String readSidoTxt() {
+
+		String sidoStr = "";
+		// 경로를 한 번 지정해주고 바꾸면 안됨.
+		File file = new File(
+				"C:\\intern_Project\\HowAboutLiving\\src\\main\\resources\\sidoTxtFile.txt");
+		Scanner sc;
+		try {
+			sc = new Scanner(file);
+			while (sc.hasNextLine()) {
+				sidoStr += sc.nextLine();
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return sidoStr;
+	}
+
+	
 
 }

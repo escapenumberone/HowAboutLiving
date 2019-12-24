@@ -19,17 +19,12 @@ public class JobCompletionListener extends JobExecutionListenerSupport {
 		} else if (jobExecution.getStatus() == BatchStatus.FAILED) {
 
 			// 평균 저장하는 로직
-//			eService.insertPublicDataEnvironmentAvg();
-			
+			eService.insertPublicDataEnvironmentAvg();
 			
 			// 메일 보내는 로직
-			sendMailToAdmin();
+			eService.errAlarmToDev("아무개");
 			
 			System.out.println("배치 잡 실패");
 		}
-	}
-
-	private void sendMailToAdmin() {
-		System.out.println("관리자한테 메일 보냄.");
 	}
 }
