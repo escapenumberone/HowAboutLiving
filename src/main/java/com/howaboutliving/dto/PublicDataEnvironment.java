@@ -2,45 +2,47 @@ package com.howaboutliving.dto;
 
 public class PublicDataEnvironment {
 	private int id;
-	private String stationName;
-	private String dataTime;
+	private String station_name;
+	private String data_time;
 	private String all_value;
 	private String so2_value;
 	private String co_value;
 	private String o3_value;
 	private String no2_value;
 	private String finedust_value;
-	private String ultrafinedust_value;
+	private String ultra_finedust_value;
 	private String all_grade;
 	private String so2_grade;
 	private String co_grade;
 	private String o3_grade;
 	private String no2_grade;
 	private String finedust_grade;
-	private String ultrafinedust_grade;
+	private String ultra_finedust_grade;
+	
+	public PublicDataEnvironment() {}
 
-	public PublicDataEnvironment(int id, String stationName, String dataTime, String all_value, String so2_value,
-			String co_value, String o3_value, String no2_value, String finedust_value, String ultrafinedust_value,
+	public PublicDataEnvironment(int id, String station_name, String data_time, String all_value, String so2_value,
+			String co_value, String o3_value, String no2_value, String finedust_value, String ultra_finedust_value,
 			String all_grade, String so2_grade, String co_grade, String o3_grade, String no2_grade,
-			String finedust_grade, String ultrafinedust_grade) {
+			String finedust_grade, String ultra_finedust_grade) {
 		super();
 		this.id = id;
-		this.stationName = stationName;
-		this.dataTime = dataTime;
+		this.station_name = station_name;
+		this.data_time = data_time;
 		this.all_value = all_value;
 		this.so2_value = so2_value;
 		this.co_value = co_value;
 		this.o3_value = o3_value;
 		this.no2_value = no2_value;
 		this.finedust_value = finedust_value;
-		this.ultrafinedust_value = ultrafinedust_value;
+		this.ultra_finedust_value = ultra_finedust_value;
 		this.all_grade = all_grade;
 		this.so2_grade = so2_grade;
 		this.co_grade = co_grade;
 		this.o3_grade = o3_grade;
 		this.no2_grade = no2_grade;
 		this.finedust_grade = finedust_grade;
-		this.ultrafinedust_grade = ultrafinedust_grade;
+		this.ultra_finedust_grade = ultra_finedust_grade;
 	}
 
 	public int getId() {
@@ -51,20 +53,20 @@ public class PublicDataEnvironment {
 		this.id = id;
 	}
 
-	public String getStationName() {
-		return stationName;
+	public String getStation_name() {
+		return station_name;
 	}
 
-	public void setStationName(String stationName) {
-		this.stationName = stationName;
+	public void setStation_name(String station_name) {
+		this.station_name = station_name;
 	}
 
-	public String getDataTime() {
-		return dataTime;
+	public String getData_time() {
+		return data_time;
 	}
 
-	public void setDataTime(String dataTime) {
-		this.dataTime = dataTime;
+	public void setData_time(String data_time) {
+		this.data_time = data_time;
 	}
 
 	public String getAll_value() {
@@ -115,12 +117,12 @@ public class PublicDataEnvironment {
 		this.finedust_value = finedust_value;
 	}
 
-	public String getUltrafinedust_value() {
-		return ultrafinedust_value;
+	public String getUltra_finedust_value() {
+		return ultra_finedust_value;
 	}
 
-	public void setUltrafinedust_value(String ultrafinedust_value) {
-		this.ultrafinedust_value = ultrafinedust_value;
+	public void setUltra_finedust_value(String ultra_finedust_value) {
+		this.ultra_finedust_value = ultra_finedust_value;
 	}
 
 	public String getAll_grade() {
@@ -171,22 +173,22 @@ public class PublicDataEnvironment {
 		this.finedust_grade = finedust_grade;
 	}
 
-	public String getUltrafinedust_grade() {
-		return ultrafinedust_grade;
+	public String getUltra_finedust_grade() {
+		return ultra_finedust_grade;
 	}
 
-	public void setUltrafinedust_grade(String ultrafinedust_grade) {
-		this.ultrafinedust_grade = ultrafinedust_grade;
+	public void setUltra_finedust_grade(String ultra_finedust_grade) {
+		this.ultra_finedust_grade = ultra_finedust_grade;
 	}
 
 	@Override
 	public String toString() {
-		return "PublicDataEnvironment [id=" + id + ", stationName=" + stationName + ", dataTime=" + dataTime
+		return "PublicDataEnvironment [id=" + id + ", station_name=" + station_name + ", data_time=" + data_time
 				+ ", all_value=" + all_value + ", so2_value=" + so2_value + ", co_value=" + co_value + ", o3_value="
 				+ o3_value + ", no2_value=" + no2_value + ", finedust_value=" + finedust_value
-				+ ", ultrafinedust_value=" + ultrafinedust_value + ", all_grade=" + all_grade + ", so2_grade="
+				+ ", ultra_finedust_value=" + ultra_finedust_value + ", all_grade=" + all_grade + ", so2_grade="
 				+ so2_grade + ", co_grade=" + co_grade + ", o3_grade=" + o3_grade + ", no2_grade=" + no2_grade
-				+ ", finedust_grade=" + finedust_grade + ", ultrafinedust_grade=" + ultrafinedust_grade + "]";
+				+ ", finedust_grade=" + finedust_grade + ", ultra_finedust_grade=" + ultra_finedust_grade + "]";
 	}
 
 }

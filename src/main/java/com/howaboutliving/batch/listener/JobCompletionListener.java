@@ -22,7 +22,7 @@ public class JobCompletionListener extends JobExecutionListenerSupport {
 			eService.insertPublicDataEnvironmentAvg();
 			
 			// 메일 보내는 로직
-			eService.errAlarmToDev("아무개");
+			eService.alarmToDev("아무개");
 			
 			System.out.println("배치 잡 실패");
 		}

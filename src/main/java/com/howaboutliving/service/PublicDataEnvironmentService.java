@@ -1,12 +1,13 @@
 package com.howaboutliving.service;
 
 import java.io.IOException;
-
-import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
+import com.howaboutliving.dto.PublicDataEnvironment;
 
 @Service
 public interface PublicDataEnvironmentService {
@@ -15,8 +16,14 @@ public interface PublicDataEnvironmentService {
 	String getSidoEnvironmentStr(String sidoName) throws IOException;
 
 	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException;
+
+	List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName);
 	
+	void insertOneDailyAvgEnvironment();
+
+	List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName);
+
 	void insertPublicDataEnvironmentAvg();
-	
-	void errAlarmToDev(String str);
+
+	void alarmToDev(String string);
 }

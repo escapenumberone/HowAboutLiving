@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.howaboutliving.dao.PublicDataDisasterDao">
+	<insert id="insertPublicDataDisaster" parameterType="java.util.List">
+		INSERT into disaster
+		(id, dsstrRiskLc, dsstrRiskAddr, dsstrRiskType, dsstrRiskGrad, appnDate, infoModDate, relisDate) values
+		<foreach item="item" index="index" collection="list" separator=",">
+		(0, #{item.dsstrRiskLc}, #{item.dsstrRiskAddr}, #{item.dsstrRiskType}, #{item.dsstrRiskGrad}, #{item.appnDate}, #{item.infoModDate}, #{item.relisDate})
+		</foreach>
+	</insert>
+</mapper>

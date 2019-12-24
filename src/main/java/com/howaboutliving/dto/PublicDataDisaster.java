@@ -8,6 +8,8 @@ public class PublicDataDisaster {
 	String appnDate;
 	String infoModDate;
 	String relisDate;
+	
+	public PublicDataDisaster() {}
 
 	public PublicDataDisaster(String dsstrRiskLc, String dsstrRiskAddr, String dsstrRiskType,
 			String dsstrRiskGrad, String appnDate, String infoModDate, String relisDate) {
