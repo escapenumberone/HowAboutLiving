@@ -18,6 +18,8 @@ public class PublicDataEnvironment {
 	private String no2_grade;
 	private String finedust_grade;
 	private String ultra_finedust_grade;
+	
+	public PublicDataEnvironment() {}
 
 	public PublicDataEnvironment(int id, String station_name, String data_time, String all_value, String so2_value,
 			String co_value, String o3_value, String no2_value, String finedust_value, String ultra_finedust_value,

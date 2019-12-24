@@ -30,7 +30,7 @@ import com.howaboutliving.service.PublicDataEnvironmentService;
 
 @Configuration
 @EnableBatchProcessing
-public class BactchConfig {
+public class BatchConfig {
 
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;

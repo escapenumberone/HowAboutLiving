@@ -6,7 +6,8 @@ import java.util.List;
 import org.apache.http.client.ClientProtocolException;
 import org.springframework.stereotype.Service;
 
-import com.howaboutliving.dto.EnvironmentDailyAvg;
+import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
+import com.howaboutliving.dto.PublicDataEnvironment;
 
 @Service
 public interface PublicDataEnvironmentService {
@@ -16,5 +17,9 @@ public interface PublicDataEnvironmentService {
 
 	void insertPublicDataEnvironmentService() throws ClientProtocolException, IOException, InterruptedException;
 
+	List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName);
+	
 	void insertOneDailyAvgEnvironment();
+
+	List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName);
 }

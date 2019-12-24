@@ -2,50 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="com.howaboutliving.dao.PublicDataEnvironmentDao">
-	<insert id="insertPublicDataEnvironment"
-		parameterType="com.howaboutliving.dto.PublicDataEnvironment">
-		INSERT INTO environment(id, 
-		data_time, station_name, all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultra_finedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultra_finedust_grade)
+	
+	<insert id="insertPublicDataEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		INSERT INTO environment(id, data_time, station_name, all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultra_finedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultra_finedust_grade)
+		VALUES(0, #{data_time}, #{station_name}, #{all_value},#{so2_value},#{co_value},#{o3_value},#{no2_value},#{finedust_value},#{ultra_finedust_value},#{all_grade},#{so2_grade},#{co_grade},#{o3_grade},#{no2_grade},#{finedust_grade},#{ultra_finedust_grade})
+	</insert>
+	
+	<insert id="insertRealtimeEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		INSERT INTO environment_realtime(id, data_time, station_name, all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultra_finedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultra_finedust_grade)
 		VALUES(0, #{data_time}, #{station_name}, #{all_value},#{so2_value},#{co_value},#{o3_value},#{no2_value},#{finedust_value},#{ultra_finedust_value},#{all_grade},#{so2_grade},#{co_grade},#{o3_grade},#{no2_grade},#{finedust_grade},#{ultra_finedust_grade})
 	</insert>
 
-	<delete id="deletePublicDataEnvironment"
-		parameterType="com.howaboutliving.dto.PublicDataEnvironment">
-		DELETE FROM environment
+	<delete id="deleteRealtimeEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		DELETE FROM environment_realtime
 	</delete>
 
-	<update id="autoIncrementReset">
-		ALTER TABLE environment AUTO_INCREMENT = 1
+	<update id="autoIncrementResetRealtimeEnvironment">
+		ALTER TABLE environment_realtime AUTO_INCREMENT = 1
 	</update>
 	
-	
-<!-- 	<select id="selectDaliyAvgEnvironment" resultMap="EnvironmentDailyAvg"> -->
-<!-- 		SELECT SUBSTRING_INDEX(dataTime, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade  -->
-<!-- 		FROM environment GROUP BY station_name, day_date ORDER BY station_name ASC, day_date DESC -->
-<!-- 	</select> -->
-	
-<!-- 	<insert id="insertDailyAvgEnvironment" parameterType="com.howaboutliving.dto.EnvironmentDailyAvg"> -->
-<!-- 		INSERT INTO environment_test(id, day_date, station_name, all_avg_value, all_avg_grade) -->
-<!-- 		VALUES(0, #{day_date}, #{station_name},#{all_avg_value},#{all_avg_grade}) -->
-<!-- 	</insert> -->
-	
-<!-- 	<resultMap type="EnvironmentDailyAvg" id="environmentDailyAvg"> -->
-<!-- 		<id column="id" property="id" /> -->
-<!-- 		<result column="day_date" property="day_date"/> -->
-<!-- 		<result column="station_name" property="station_name"/> -->
-<!-- 		<result column="all_avg_value" property="all_avg_value"/> -->
-<!-- 		<result column="all_avg_grade" property="all_avg_grade"/> -->
-<!-- 	</resultMap> -->
+	<select id="selectRealtimeEnvironmentByStationName" parameterType="String" resultType="com.howaboutliving.dto.PublicDataEnvironment">
+		SELECT id, data_time, station_name, all_value,so2_value,co_value,o3_value,no2_value,finedust_value,ultra_finedust_value,all_grade,so2_grade,co_grade,o3_grade,no2_grade,finedust_grade,ultra_finedust_grade
+		FROM environment_realtime
+		WHERE station_name = #{stationName}
+	</select>
+
+	<select id="selectSevenDaysDailyAvgEnvironmentByStationName" parameterType="String" resultType="com.howaboutliving.dto.PublicDataEnvironmentDailyAvg">
+		SELECT id, day_date, station_name, all_avg_value, all_avg_grade
+		FROM environment_daily_avg
+		WHERE station_name = #{stationName}
+		ORDER BY day_date DESC
+		LIMIT 7;
+	</select>
 
 	<insert id="insertOneDailyAvgEnvironment" parameterType="String">
-		
-		INSERT INTO environment_daily_avg(day_date, station_name, all_avg_value, all_avg_grade)
+		INSERT INTO environment_daily_avg(day_date, station_name, all_avg_value,all_avg_grade)
 		(SELECT SUBSTRING_INDEX(data_time, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade
-		FROM environment 
-		GROUP BY station_name, day_date 
-		HAVING day_date=#{oneDaysAgo} 
+		FROM environment
+		GROUP BY station_name, day_date
+		HAVING day_date=#{oneDaysAgo}
 		ORDER BY station_name ASC, day_date DESC)
-		
 	</insert>
-	
+
 </mapper>

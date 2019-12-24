@@ -1,14 +1,15 @@
 package com.howaboutliving.dto;
 
-public class EnvironmentDailyAvg {
+public class PublicDataEnvironmentDailyAvg {
 	private int id;
 	private String day_date;
 	private String station_name;
-	private String all_avg_value;
-	private String all_avg_grade;
+	private int all_avg_value;
+	private int all_avg_grade;
 
-	public EnvironmentDailyAvg(int id, String day_date, String station_name, String all_avg_value,
-			String all_avg_grade) {
+	public PublicDataEnvironmentDailyAvg() {}
+	
+	public PublicDataEnvironmentDailyAvg(int id, String day_date, String station_name, int all_avg_value, int all_avg_grade) {
 		super();
 		this.id = id;
 		this.day_date = day_date;
@@ -41,25 +42,25 @@ public class EnvironmentDailyAvg {
 		this.station_name = station_name;
 	}
 
-	public String getAll_avg_value() {
+	public int getAll_avg_value() {
 		return all_avg_value;
 	}
 
-	public void setAll_avg_value(String all_avg_value) {
+	public void setAll_avg_value(int all_avg_value) {
 		this.all_avg_value = all_avg_value;
 	}
 
-	public String getAll_avg_grade() {
+	public int getAll_avg_grade() {
 		return all_avg_grade;
 	}
 
-	public void setAll_avg_grade(String all_avg_grade) {
+	public void setAll_avg_grade(int all_avg_grade) {
 		this.all_avg_grade = all_avg_grade;
 	}
 
 	@Override
 	public String toString() {
-		return "EnvironmentDailyAvg [id=" + id + ", day_date=" + day_date + ", station_name=" + station_name
+		return "PublicDataEnvironmentDailyAvg [id=" + id + ", day_date=" + day_date + ", station_name=" + station_name
 				+ ", all_avg_value=" + all_avg_value + ", all_avg_grade=" + all_avg_grade + "]";
 	}
 

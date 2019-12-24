@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 
 import javax.mail.internet.MimeMessage;
 
@@ -22,15 +23,16 @@ import org.springframework.web.client.RestTemplate;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.howaboutliving.HowaboutlivingApplication;
 import com.howaboutliving.dao.PublicDataEnvironmentDao;
-import com.howaboutliving.dto.EnvironmentDailyAvg;
 import com.howaboutliving.dto.PublicDataEnvironment;
+import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
 
 @Service
 public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentService {
 	private static final int NUMOFROWS = 10000;
-//	private String sidoStr = readSidoTxt();
-	private String sidoStr = "fd,smd,f";
+	private String sidoStr = readSidoTxt();
+//	private String sidoStr = "fd,smd,f";
 	private String[] sidoList = sidoStr.split(",");
 
 	@Autowired
@@ -102,24 +104,27 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		}
 	}
 
-//	public String readSidoTxt() {
-//
-//		String sidoStr = "";
-//		// 경로를 한 번 지정해주고 바꾸면 안됨.
-//		File file = new File("C:\\Users\\user\\Documents\\workspace-spring-tool-suite-4-4.4.2.RELEASE\\howaboutliving\\src\\main\\resources\\sidoTxtFile.txt");
-//		Scanner sc;
-//		try {
-//			sc = new Scanner(file);
-//			while (sc.hasNextLine()) {
-//				sidoStr += sc.nextLine();
-//			}
-//			sc.close();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return sidoStr;
-//	}
+	public String readSidoTxt() {
+
+		String sidoStr = "";
+		
+		String sidoTxtFilePath = new File("").getAbsolutePath() + "\\src\\main\\resources\\sidoTxtFile.txt";
+		String changeSidoTxtFilePathForOS = sidoTxtFilePath.replaceAll(Matcher.quoteReplacement(File.separator), "/");
+		File file = new File(changeSidoTxtFilePathForOS);
+		Scanner sc;
+		
+		try {
+			sc = new Scanner(file);
+			while (sc.hasNextLine()) {
+				sidoStr += sc.nextLine();
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return sidoStr;
+	}
 
 	public void alarmToDev(String str) {
 
@@ -151,6 +156,16 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 	public String oneDaysAgoStr() {
 		LocalDateTime now = LocalDateTime.now();
 		return now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	}
+
+	@Override
+	public List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName) {
+		return eDao.selectSevenDaysDailyAvgEnvironmentByStationName(stationName);
+	}
+	
+	@Override
+	public List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName){
+		return eDao.selectRealtimeEnvironmentByStationName(stationName);
 	}
 
 
