@@ -62,7 +62,7 @@ public class EnvironmentReader implements ItemReader<String> {
 	
 	private String makeUrl(String sidoName) throws Exception {
 		System.out.println("도시이름 : " + sidoName);
-		String sidoEnvironmentURL = "http://openapiddd.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"
+		String sidoEnvironmentURL = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?"
 				+ "ServiceKey=T9ukDjLAYhGMGK%2FKeH7khfgFEnCHXfYhuHx6GkQIaDpMKFQ4E6sDm%2Bb8aYtmcibG1s8Auk%2BzauoNOZN2HDnRBQ%3D%3D"
 				+ "&numOfRows=" + NUMOFROWS + "&pageNo=1" + "&sidoName=" + sidoName + "&_returnType=json";
 		StringBuilder urlBuilder = new StringBuilder(sidoEnvironmentURL); /* URL */

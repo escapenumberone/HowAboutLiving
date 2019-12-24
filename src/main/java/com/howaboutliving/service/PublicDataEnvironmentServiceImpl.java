@@ -103,7 +103,7 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 		String sidoStr = "";
 		// 경로를 한 번 지정해주고 바꾸면 안됨.
 		File file = new File(
-				"C:\\Users\\user\\Documents\\workspace-spring-tool-suite-4-4.4.2.RELEASE\\howaboutliving\\src\\main\\resources\\sidoTxtFile.txt");
+				"C:\\intern_Project\\HowAboutLiving\\src\\main\\resources\\sidoTxtFile.txt");
 		Scanner sc;
 		try {
 			sc = new Scanner(file);
