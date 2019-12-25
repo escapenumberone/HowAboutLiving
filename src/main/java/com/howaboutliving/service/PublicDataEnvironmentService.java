@@ -11,7 +11,7 @@ import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
 public interface PublicDataEnvironmentService {
 	List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName);
 	
-	void insertOneDailyAvgEnvironment();
+	void insertDailyAvgEnvironmentByOneDaysAgo();
 
 	List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName);
 

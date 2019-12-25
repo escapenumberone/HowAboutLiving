@@ -2,11 +2,9 @@ package com.howaboutliving.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,8 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.howaboutliving.dto.PublicDataEnvironment;
-import com.howaboutliving.service.PublicDataDisasterService;
 
 @RestController
 @CrossOrigin // 개발 서버 간에 api콜 허락하기 위한 CORS 설정

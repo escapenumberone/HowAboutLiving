@@ -56,10 +56,26 @@
 		LIMIT 7;
 	</select>
 
-	<insert id="insertOneDailyAvgEnvironment" parameterType="String">
+	<insert id="insertDailyAvgEnvironmentByOneDaysAgo" parameterType="String">
 		INSERT INTO environment_daily_avg(day_date, station_name, all_avg_value,all_avg_grade)
 		(SELECT SUBSTRING_INDEX(data_time, ' ', 1) as day_date, station_name, AVG(all_value) as all_avg_value, AVG(all_grade) as all_avg_grade
-		FROM environment
+		FROM
+			(select *
+			from environment
+			where all_value != '-' and all_value != '' and all_value != 0
+			and so2_value != '-' and so2_value != '' and so2_value != 0
+			and co_value != '-' and co_value != '' and co_value != 0
+			and o3_value != '-' and o3_value != '' and o3_value != 0
+			and no2_value != '-' and no2_value != '' and no2_value != 0
+			and finedust_value != '-' and finedust_value != '' and finedust_value != 0
+			and ultra_finedust_value != '-' and ultra_finedust_value != '' and ultra_finedust_value != 0
+			and all_grade != '-' and all_grade != '' and all_grade != 0
+			and so2_grade != '-' and so2_grade != '' and so2_grade != 0
+			and co_grade != '-' and co_grade != '' and co_grade != 0
+			and o3_grade != '-' and o3_grade != '' and o3_grade != 0
+			and no2_grade != '-' and no2_grade != '' and no2_grade != 0
+			and finedust_grade != '-' and finedust_grade != '' and finedust_grade != 0
+			and ultra_finedust_grade != '-' and ultra_finedust_grade != '' and ultra_finedust_grade != 0) as environment_except_nothing
 		GROUP BY station_name, day_date
 		HAVING day_date=#{oneDaysAgo}
 		ORDER BY station_name ASC, day_date DESC)
