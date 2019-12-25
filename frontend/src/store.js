@@ -8,7 +8,7 @@ export const store = new Vuex.Store({
     state: {
         mainPage : "Emotion",
         disasterCnt : 0,
-
+        environmentSevendays : [],
     }
   // ...
 });

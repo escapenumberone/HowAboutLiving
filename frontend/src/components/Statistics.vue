@@ -3,7 +3,7 @@
         <h1>통계 화면</h1>
         <div>
             <div class="left">
-                <span class="locDisaster">재해</span>
+                <span class="locDisaster">재해 : {{}}</span>
                 <br>
                 <span class="statisticsDisaster">22건</span>
                 <br>
@@ -22,6 +22,7 @@
 
 <script>
 import LineChart from './LineChart';
+import axios from 'axios';
 
 export default {
     name: 'Emotion',
@@ -32,6 +33,15 @@ export default {
         return {
             emotion : "vomit"
         }
+    },
+
+    mounted() {
+        //this.fetchEnvironmentSevendays();
+    },
+
+    methods : {
+        
+
     }
 }
 </script>
