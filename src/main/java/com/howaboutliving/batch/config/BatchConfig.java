@@ -8,7 +8,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.step.skip.SkipPolicy;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -17,8 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.howaboutliving.batch.listener.EnvironmentListener;
-import com.howaboutliving.batch.listener.JobCompletionListener;
+import com.howaboutliving.batch.listener.DisasterJobCompletionListener;
+import com.howaboutliving.batch.listener.EnvironmentJobCompletionListener;
+import com.howaboutliving.batch.listener.ReadListener;
 import com.howaboutliving.batch.processor.DisasterProcessor;
 import com.howaboutliving.batch.processor.EnvironmentProcessor;
 import com.howaboutliving.batch.reader.DisasterReader;
@@ -44,27 +44,27 @@ public class BatchConfig {
 
 	@Bean
 	public Job environmentJob() {
-		return jobBuilderFactory.get("environment-job").start(environmentStep()).listener(listener()).build();
+		return jobBuilderFactory.get("environment-job").start(environmentStep()).listener(environmentJobCompletionlistener()).build();
 	}
 	
 	@Bean
 	public Job disasterJob() {
-		return jobBuilderFactory.get("disaster-job").start(disastertStep()).listener(listener()).build();
+		return jobBuilderFactory.get("disaster-job").start(disastertStep()).listener(disasterJobCompletionlistener()).build();
 	}
 	
 	@Bean
 	public Step environmentStep() {
 		return stepBuilderFactory.get("environment-step").<String, List<PublicDataEnvironment>>chunk(50)
-				.reader(envrionmentReader()).listener(environmentListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
+				.reader(envrionmentReader()).listener(readListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(envrionmentProcessor()).writer(envrionmentWriter()).build();
 	}
 	
 	@Bean
 	public Step disastertStep() {
 		return stepBuilderFactory.get("disaster-step").<String, List<PublicDataDisaster>>chunk(20)
-				.reader(disasterReader()).listener(environmentListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(disasterProcessor()).writer(disasterWriter()).build();
+				.reader(disasterReader()).listener(readListener()).faultTolerant().skipLimit(5).skip(Exception.class).processor(disasterProcessor()).writer(disasterWriter()).build();
 	}
 	
-	
+	/** 일 평균 넣는 tasklet 잡 */
 	@Bean
 	public Job environmentDailyAvgJob() {
 		return jobBuilderFactory.get("environmentDailyAvg-Job").start(environmentDailyAvgStep()).build();
@@ -111,12 +111,17 @@ public class BatchConfig {
 	}
 
 	@Bean
-	public JobExecutionListener listener() {
-		return new JobCompletionListener();
+	public JobExecutionListener disasterJobCompletionlistener() {
+		return new DisasterJobCompletionListener();
 	}
 	
 	@Bean
-	public EnvironmentListener environmentListener() {
-		return new EnvironmentListener();
+	public JobExecutionListener environmentJobCompletionlistener() {
+		return new EnvironmentJobCompletionListener();
+	}
+	
+	@Bean
+	public ReadListener readListener() {
+		return new ReadListener();
 	}
 }

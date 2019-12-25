@@ -15,10 +15,16 @@ public class DisasterWriter implements ItemWriter<List<PublicDataDisaster>>{
 	
 	@Override
 	public void write(List<? extends List<PublicDataDisaster>> items) throws Exception {
-		System.out.println("라이터 시작");
+		
+		DisasterDelete();
+		
 		for (List<PublicDataDisaster> list : items) {
 			dDao.insertPublicDataDisaster(list);
 		}
-		System.out.println("재해 데이터 업데이트 완료");
+	}
+	
+	private void DisasterDelete() {
+		dDao.deleteDisaster(); // 데이터 전부 삭제
+		dDao.autoIncrementResetDisaster(); // auto increment 리셋
 	}
 }
