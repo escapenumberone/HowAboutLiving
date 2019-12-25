@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.howaboutliving.service.PublicDataEnvironmentService;
 
 @RestController
 @RequestMapping("/environment")
+@CrossOrigin // 개발 서버 간에 api콜 허락하기 위한 CORS 설정
 public class PublicDataEnvironmentController {
 	
 	@Autowired

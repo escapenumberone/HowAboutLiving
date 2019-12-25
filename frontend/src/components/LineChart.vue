@@ -8,7 +8,9 @@
       return {
         datacollection: {
           //Data to be represented on x-axis
-          labels: ['12-17', '12-18', '12-19', '12-20', '12-21', '12-22', '12-23'], 
+          labels: ['2019-12-19', this.$store.state.environmentSevendays[5].day_date, this.$store.state.environmentSevendays[4].day_date,
+           this.$store.state.environmentSevendays[3].day_date, this.$store.state.environmentSevendays[2].day_date,
+           this.$store.state.environmentSevendays[1].day_date, this.$store.state.environmentSevendays[0].day_date], 
           datasets: [
             {
               label: '이전 데이터',
@@ -17,7 +19,9 @@
               borderWidth: 1,
               pointBorderColor: '#249EBF',
               //Data to be represented on y-axis
-              data: [50, 20, 30, 50, 90, 10, 20]
+              data: [80, this.$store.state.environmentSevendays[5].all_avg_value, this.$store.state.environmentSevendays[4].all_avg_value,
+               this.$store.state.environmentSevendays[3].all_avg_value, this.$store.state.environmentSevendays[2].all_avg_value,
+               this.$store.state.environmentSevendays[1].all_avg_value, this.$store.state.environmentSevendays[0].all_avg_value]
             }
           ]
         },

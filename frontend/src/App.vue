@@ -60,10 +60,11 @@ export default {
   
   mounted() {
     this.initAllowLoc();
+    this.fetchEnvironmentSevendays();
   },
 
   methods : {
-    initAllowLoc : function() {
+    initAllowLoc : async function() {
       window.navigator.geolocation.getCurrentPosition(this.current_position);
     },
 
@@ -86,9 +87,45 @@ export default {
       }).then((response) => {
         console.log(response.data);
         temp.whereAmI = response.data;
-      }).catch((error) => {
+        var str = temp.whereAmI;
+        var strArray = str.split(' ')
+        this.$store.state.whereAmI = strArray[strArray.length - 1];
+        console.log(this.$store.state.whereAmI);
+     }).catch((error) => {
         console.log("ERROR 발생");
       })
+    },
+    fetchEnvironmentSevendays : function() {
+        var temp = this;
+        axios({
+            methos : 'GET',
+            url : 'http://localhost:8080/environment/sevendays/' + this.$store.state.whereAmI,
+        }).then((response) => {
+            if(response.status === 204){
+                this.$store.state.whereAmI = this.$store.state.whereAmI.substring(0, this.$store.state.whereAmI.length - 1);
+                console.log(this.$store.state.whereAmI);
+                temp.fetchEnvironmentSevendaysAgain();
+            } else {
+                console.log(response.data.sevendaysList);
+                this.$store.state.environmentSevendays = response.data.sevendaysList;
+                temp.whereAmI = response.data;
+            }
+        }).catch((error) => {
+            console.log("ERROR 발생");
+        })
+    },
+    fetchEnvironmentSevendaysAgain : function() {
+        var temp = this;
+        axios({
+            methos : 'GET',
+            url : 'http://localhost:8080/environment/sevendays/' + this.$store.state.whereAmI,
+        }).then((response) => {
+            console.log(response.data.sevendaysList);
+            this.$store.state.environmentSevendays = response.data.sevendaysList;
+            temp.whereAmI = response.data;
+        }).catch((error) => {
+            console.log("ERROR 발생");
+        })
     }
   }
 }
