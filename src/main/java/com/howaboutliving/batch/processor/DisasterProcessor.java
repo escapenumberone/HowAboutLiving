@@ -17,7 +17,6 @@ public class DisasterProcessor implements ItemProcessor<String, List<PublicDataD
 	
 	@Override
 	public List<PublicDataDisaster> process(String readData) throws Exception {
-		System.out.println("프로세스 시작");
 		publiaDataDisasterParse(readData);
 		
 		return publicDataDisasterList;
@@ -31,7 +30,7 @@ public class DisasterProcessor implements ItemProcessor<String, List<PublicDataD
 		JsonObject parse_body = (JsonObject) parse_response.get("body");
 		JsonArray parse_items = (JsonArray) parse_body.get("items");
 		
-		/** 파싱한 데이터 DTO List로 만듦 */
+		// 파싱한 데이터 DTO List로 만듦
 		for (int i = 0; i < parse_items.size(); i++) {
 			JsonObject item = (JsonObject) parse_items.get(i);
 			

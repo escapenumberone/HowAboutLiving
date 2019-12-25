@@ -24,7 +24,6 @@ public class EnvironmentWriter implements ItemWriter<List<PublicDataEnvironment>
 				eDao.insertRealtimeEnvironment(list.get(i));
 			}
 		}
-		System.out.println("환경 데이터 업데이트 완료");
 	}
 	
 	private void realtimeEnvironmentDelete() {

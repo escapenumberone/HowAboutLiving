@@ -23,4 +23,5 @@ public interface PublicDataEnvironmentDao {
 	
 	void insertPublicDataEnvironment(String str);
 	void insertPublicDataEnvironmentAvg(String str);
+	void insertPublicDataRealtimeEnvironmentAvg(String str);
 }
