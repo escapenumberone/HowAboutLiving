@@ -1,8 +1,12 @@
 package com.howaboutliving.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import com.howaboutliving.dto.PublicDataDisaster;
 
 @Service
 public interface PublicDataDisasterService {
-	void save();
+	List<PublicDataDisaster> selectPublicDataDisasterByDsstrRiskLc(String dsstrRiskLc);
 }
