@@ -9,6 +9,13 @@
 		</foreach>
 	</insert>
 	
+	<select id="selectPublicDataDisasterByDsstrRiskLc" parameterType="String" resultType="com.howaboutliving.dto.PublicDataDisaster">
+		SELECT  id, dsstrRiskLc, dsstrRiskAddr, dsstrRiskType, dsstrRiskGrad, appnDate, infoModDate, relisDate
+		FROM disaster 
+		WHERE (relisDate = 'null' AND dsstrRiskLc = #{dsstrRiskLc}) 
+		OR (relisDate = '' AND dsstrRiskLc = #{dsstrRiskLc});
+	</select>
+	
 	<delete id="deleteRealtimeEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
 		DELETE FROM disaster
 	</delete>

@@ -1,29 +1,12 @@
 package com.howaboutliving.service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.Matcher;
 
-import javax.mail.internet.MimeMessage;
-
-import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.howaboutliving.HowaboutlivingApplication;
 import com.howaboutliving.dao.PublicDataEnvironmentDao;
 import com.howaboutliving.dto.PublicDataEnvironment;
 import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
@@ -34,9 +17,8 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 	@Autowired
 	public PublicDataEnvironmentDao eDao;
 
-	@Override
-	public void insertOneDailyAvgEnvironment() { // 일 평균 데이터 넣는 로직
-		eDao.insertOneDailyAvgEnvironment(oneDaysAgoStr());
+	public void insertDailyAvgEnvironmentByOneDaysAgo() { // 일 평균 데이터 넣는 로직
+		eDao.insertDailyAvgEnvironmentByOneDaysAgo(oneDaysAgoStr());
 	}
 
 	public String oneDaysAgoStr() { // 하루 전 날짜 구해오는 로직

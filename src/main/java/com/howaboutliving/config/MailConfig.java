@@ -27,7 +27,6 @@ public class MailConfig {
 		props.put("mail.smtp.auth","true");
 		props.put("mail.smtp.quitwait","false");
 		props.put("mail.debug","false"); // 디버그 모드 : 개발이 완료되면 false
-		System.out.println(mc.myEmail + " " + mc.myPw);
 		mailSender.setJavaMailProperties(props);
 		
 		mailSender.setProtocol("smtp");

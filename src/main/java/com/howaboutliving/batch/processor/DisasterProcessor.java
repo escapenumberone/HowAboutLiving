@@ -9,7 +9,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.howaboutliving.dto.PublicDataDisaster;
-import com.howaboutliving.dto.PublicDataEnvironment;
 
 public class DisasterProcessor implements ItemProcessor<String, List<PublicDataDisaster>> {
 	
