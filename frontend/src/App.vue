@@ -7,8 +7,13 @@
         <div id="content">
           <TopBar :currentLocation="whereAmI" />
           <div class="container-fluid mt-4">
-            <Header />
-            <Emotion/>
+            <!-- <Header /> -->
+            <div v-if="this.$store.state.mainPage === 'Emotion'">
+              <Emotion/>
+            </div>
+            <div v-else>
+              <Statistics/>
+            </div>
             <!-- <Example /> -->
           </div>
         </div>
@@ -27,6 +32,7 @@ import Example from './components/Example';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Emotion from './components/Emotion';
+import Statistics from './components/Statistics';
 import axios from 'axios';
 
 export default {
@@ -39,6 +45,7 @@ export default {
     Footer,
     ScrollToTop,
     Emotion,
+    Statistics
   },
   data() {
     return {
@@ -47,7 +54,7 @@ export default {
         latitude : 0,
         longitude : 0
       },
-      whereAmI: ""
+      whereAmI: "",
     }
   },
   
