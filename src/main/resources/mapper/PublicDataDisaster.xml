@@ -16,5 +16,12 @@
 		OR (relisDate = '' AND dsstrRiskLc = #{dsstrRiskLc});
 	</select>
 	
+	<delete id="deleteRealtimeEnvironment" parameterType="com.howaboutliving.dto.PublicDataEnvironment">
+		DELETE FROM disaster
+	</delete>
+
+	<update id="autoIncrementResetRealtimeEnvironment">
+		ALTER TABLE disaster AUTO_INCREMENT = 1
+	</update>
 	
 </mapper>

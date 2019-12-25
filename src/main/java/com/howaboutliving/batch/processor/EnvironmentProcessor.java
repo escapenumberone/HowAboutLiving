@@ -27,7 +27,7 @@ public class EnvironmentProcessor implements ItemProcessor<String, List<PublicDa
 		JsonObject parse_Json = JsonParser.parseString(readData).getAsJsonObject();
 		JsonArray parse_list = parse_Json.get("list").getAsJsonArray();
 		
-		/** 파싱한 데이터 DTO List로 만듦 */
+		// 파싱한 데이터 DTO List로 만듦 
 		for (int j = 0; j < parse_list.size(); j++) {
 			JsonObject parse_obj = (JsonObject) parse_list.get(j);
 
@@ -52,7 +52,5 @@ public class EnvironmentProcessor implements ItemProcessor<String, List<PublicDa
 			);
 			publicDataEnvironmentList.add(publicDataEnvironment);
 		}
-		
 	}
-	
 }

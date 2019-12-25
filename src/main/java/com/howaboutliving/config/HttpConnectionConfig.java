@@ -6,14 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Configuration
 public class HttpConnectionConfig {
 	@Bean
     public RestTemplate getCustomRestTemplate(){
         HttpComponentsClientHttpRequestFactory httpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-        httpRequestFactory.setConnectTimeout(2000);
+        httpRequestFactory.setConnectTimeout(10000); // 연결 시간초과
         httpRequestFactory.setReadTimeout(10000); // 읽기 시간초과, ms
         HttpClient httpClient = HttpClientBuilder.create()
                 .setMaxConnTotal(20) // 커넥션 풀 갯수

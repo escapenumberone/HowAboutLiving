@@ -9935,7 +9935,8 @@ a:focus {
 }
 
 .topbar {
-  height: 4.375rem;
+  height: 6.375rem;
+  padding: 18px;
 }
 
 .topbar #sidebarToggleTop {

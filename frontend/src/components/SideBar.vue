@@ -17,18 +17,18 @@
         <hr class="sidebar-divider">
   
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li @click="clickMain" class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Main</span>
+            <span >Main</span>
           </a>
         </li>
   
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+        <li @click="clickStatistics" class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Statistics</span>
+            <i class="fas fa-fw fa-wre nch"></i>
+            <span >Statistics</span>
           </a>
         </li>
         
@@ -47,6 +47,14 @@ export default {
         return {
 
         };
+    },
+    methods: {
+      clickMain: function(){
+        this.$store.state.mainPage = 'Emotion'
+      },
+      clickStatistics: function(){
+        this.$store.state.mainPage = 'Statistics'
+      }
     }
 }
 </script>

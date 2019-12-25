@@ -15,7 +15,17 @@
 	
 	
 	<insert id="insertPublicDataEnvironmentAvg" parameterType="String">
-		INSERT INTO environment_test
+		INSERT INTO environment
+		(SELECT 0, CONCAT(CURDATE(), " ", #{str}) as date_time, station_name, ROUND(AVG(all_value), 0) as all_value, ROUND(AVG(so2_value), 3) as so2_value, ROUND(AVG(co_value), 1) as co_value, ROUND(AVG(o3_value), 3) as o3_value, ROUND(AVG(no2_value), 3) as no2_value,
+		ROUND(AVG(finedust_value), 0) as finedust_value, ROUND(AVG(ultra_finedust_value), 0) as ultra_finedust_value, ROUND(AVG(all_grade), 0) as all_grade, ROUND(AVG(so2_grade), 0) as so2_grade, ROUND(AVG(co_grade), 0) as co_grade, 
+		ROUND(AVG(o3_grade), 0) as o3_grade, ROUND(AVG(no2_grade), 0) as no2_grade, ROUND(AVG(finedust_grade), 0) as finedust_grade, ROUND(AVG(ultra_finedust_grade), 0) as ultra_finedust_grade
+		FROM environment
+		WHERE data_time like CONCAT('%',#{str})
+		GROUP BY station_name)
+	</insert >
+	
+	<insert id="insertPublicDataRealtimeEnvironmentAvg" parameterType="String">
+		INSERT INTO environment_realtime
 		(SELECT 0, CONCAT(CURDATE(), " ", #{str}) as date_time, station_name, ROUND(AVG(all_value), 0) as all_value, ROUND(AVG(so2_value), 3) as so2_value, ROUND(AVG(co_value), 1) as co_value, ROUND(AVG(o3_value), 3) as o3_value, ROUND(AVG(no2_value), 3) as no2_value,
 		ROUND(AVG(finedust_value), 0) as finedust_value, ROUND(AVG(ultra_finedust_value), 0) as ultra_finedust_value, ROUND(AVG(all_grade), 0) as all_grade, ROUND(AVG(so2_grade), 0) as so2_grade, ROUND(AVG(co_grade), 0) as co_grade, 
 		ROUND(AVG(o3_grade), 0) as o3_grade, ROUND(AVG(no2_grade), 0) as no2_grade, ROUND(AVG(finedust_grade), 0) as finedust_grade, ROUND(AVG(ultra_finedust_grade), 0) as ultra_finedust_grade
