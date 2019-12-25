@@ -17,7 +17,7 @@ public interface PublicDataEnvironmentDao {
 	void autoIncrementResetRealtimeEnvironment();
 	List<PublicDataEnvironment> selectRealtimeEnvironmentByStationName(String stationName);
 	
-	void insertOneDailyAvgEnvironment(String oneDaysAgo);
+	void insertDailyAvgEnvironmentByOneDaysAgo(String oneDaysAgo);
 	
 	List<PublicDataEnvironmentDailyAvg> selectSevenDaysDailyAvgEnvironmentByStationName(String stationName);
 	

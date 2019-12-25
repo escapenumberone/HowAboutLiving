@@ -50,59 +50,7 @@ public class EnvironmentProcessor implements ItemProcessor<String, List<PublicDa
 				parse_obj.get("pm10Grade").getAsString(),
 				parse_obj.get("pm25Grade").getAsString()
 			);
-//			checkpublicDataEnvironment(publicDataEnvironment);
 			publicDataEnvironmentList.add(publicDataEnvironment);
-		}
-		
-		JsonObject parse_parm = (JsonObject) parse_Json.get("parm");
-		if(!parse_parm.get("resultCode").getAsString().equals("")) {
-			System.out.println("환경 open api 서버 에러");
-		}
-	}
-	
-	// mysql 상에서 지울 수 있는 방법이 있을텐데...
-	private void checkpublicDataEnvironment(PublicDataEnvironment publicDataEnvironment) {
-		if(publicDataEnvironment.getAll_value().equals("") || publicDataEnvironment.getAll_value().equals("-")) {
-			publicDataEnvironment.setAll_value("0");
-		}
-		if(publicDataEnvironment.getSo2_value().equals("") || publicDataEnvironment.getSo2_value().equals("-")) {
-			publicDataEnvironment.setSo2_value("0");
-		}
-		if(publicDataEnvironment.getCo_value().equals("") || publicDataEnvironment.getCo_value().equals("-")) {
-			publicDataEnvironment.setCo_value("0");
-		}
-		if(publicDataEnvironment.getO3_value().equals("") || publicDataEnvironment.getO3_value().equals("-")) {
-			publicDataEnvironment.setO3_value("0");
-		}
-		if(publicDataEnvironment.getNo2_value().equals("") || publicDataEnvironment.getNo2_value().equals("-")) {
-			publicDataEnvironment.setNo2_value("0");
-		}
-		if(publicDataEnvironment.getFinedust_value().equals("") || publicDataEnvironment.getFinedust_value().equals("-")) {
-			publicDataEnvironment.setFinedust_value("0");
-		}
-		if(publicDataEnvironment.getUltra_finedust_value().equals("") || publicDataEnvironment.getUltra_finedust_value().equals("-")) {
-			publicDataEnvironment.setUltra_finedust_value("0");
-		}
-		if(publicDataEnvironment.getAll_grade().equals("") || publicDataEnvironment.getAll_grade().equals("-")) {
-			publicDataEnvironment.setAll_grade("0");
-		}
-		if(publicDataEnvironment.getSo2_grade().equals("") || publicDataEnvironment.getSo2_grade().equals("-")) {
-			publicDataEnvironment.setSo2_grade("0");
-		}
-		if(publicDataEnvironment.getCo_grade().equals("") || publicDataEnvironment.getCo_grade().equals("-")) {
-			publicDataEnvironment.setCo_grade("0");
-		}
-		if(publicDataEnvironment.getO3_grade().equals("") || publicDataEnvironment.getO3_grade().equals("-")) {
-			publicDataEnvironment.setO3_grade("0");
-		}
-		if(publicDataEnvironment.getNo2_grade().equals("") || publicDataEnvironment.getNo2_grade().equals("-")) {
-			publicDataEnvironment.setNo2_grade("0");
-		}
-		if(publicDataEnvironment.getFinedust_grade().equals("") || publicDataEnvironment.getFinedust_grade().equals("-")) {
-			publicDataEnvironment.setFinedust_grade("0");
-		}
-		if(publicDataEnvironment.getUltra_finedust_grade().equals("") || publicDataEnvironment.getUltra_finedust_grade().equals("-")) {
-			publicDataEnvironment.setUltra_finedust_grade("0");
 		}
 		
 	}

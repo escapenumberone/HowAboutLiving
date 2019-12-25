@@ -74,7 +74,7 @@ public class BatchConfig {
 	public Step environmentDailyAvgStep() {
 		return stepBuilderFactory.get("environmentDailyAvg-Step").tasklet((contribution, chunkContext) -> {
 			System.out.println("Start Avg");
-			eService.insertOneDailyAvgEnvironment();
+			eService.insertDailyAvgEnvironmentByOneDaysAgo();
 			return RepeatStatus.FINISHED;
 		}).build();
 	}

@@ -32,7 +32,6 @@ import com.howaboutliving.dto.PublicDataEnvironmentDailyAvg;
 public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentService {
 	private static final int NUMOFROWS = 10000;
 	private String sidoStr = readSidoTxt();
-//	private String sidoStr = "fd,smd,f";
 	private String[] sidoList = sidoStr.split(",");
 
 	@Autowired
@@ -148,8 +147,8 @@ public class PublicDataEnvironmentServiceImpl implements PublicDataEnvironmentSe
 	}
 
 	@Override
-	public void insertOneDailyAvgEnvironment() {
-		eDao.insertOneDailyAvgEnvironment(oneDaysAgoStr());
+	public void insertDailyAvgEnvironmentByOneDaysAgo() {
+		eDao.insertDailyAvgEnvironmentByOneDaysAgo(oneDaysAgoStr());
 	}
 
 	public String oneDaysAgoStr() {

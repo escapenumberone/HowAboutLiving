@@ -68,7 +68,7 @@ public class JobInvokeController {
 //	}
 
 
-//	@Scheduled(cron = "0 0 0 */1 * *")  // 매일 0시 0분 0초에 실행(1일 주기로 업데이트)
+//	@Scheduled(cron = "0 5 0 */1 * *")  // 매일 0시 0분 0초에 실행(1일 주기로 업데이트)
 //	public void publicDataDisasterBatch() {
 //		System.out.println("배치 잡 시작");
 //		System.out.println("재해 데이터 업데이트 시작");
