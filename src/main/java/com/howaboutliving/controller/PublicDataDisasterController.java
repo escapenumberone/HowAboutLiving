@@ -18,7 +18,7 @@ import com.howaboutliving.service.PublicDataDisasterService;
 
 @RestController
 @RequestMapping("/disaster")
-@CrossOrigin // 개발 서버 간에 api콜 허락하기 위한 CORS 설정
+@CrossOrigin(origins="*") // 개발 서버 간에 api콜 허락하기 위한 CORS 설정
 public class PublicDataDisasterController {
 	
 	@Autowired

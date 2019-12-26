@@ -20,7 +20,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @RestController
-@CrossOrigin // 개발 서버 간에 api콜 허락하기 위한 CORS 설정
+@CrossOrigin(origins="*") // 개발 서버 간에 api콜 허락하기 위한 CORS 설정
 public class CommonController {
 	
 	@RequestMapping("/geocoding")
