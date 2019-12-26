@@ -79,7 +79,7 @@ export default {
       var temp = this;
       axios({
         methos : 'GET',
-        url : 'http://localhost:8080/geocoding',
+        url : 'http://127.0.0.1:8080/geocoding',
         params : {
           latitude : this.locInfo.latitude,
           longitude : this.locInfo.longitude
@@ -99,7 +99,7 @@ export default {
         var temp = this;
         axios({
             methos : 'GET',
-            url : 'http://localhost:8080/environment/sevendays/' + this.$store.state.whereAmI,
+            url : 'http://127.0.0.1:8080/environment/sevendays/' + this.$store.state.whereAmI,
         }).then((response) => {
             if(response.status === 204){
                 this.$store.state.whereAmI = this.$store.state.whereAmI.substring(0, this.$store.state.whereAmI.length - 1);
@@ -118,7 +118,7 @@ export default {
         var temp = this;
         axios({
             methos : 'GET',
-            url : 'http://localhost:8080/environment/sevendays/' + this.$store.state.whereAmI,
+            url : 'http://127.0.0.1:8080/environment/sevendays/' + this.$store.state.whereAmI,
         }).then((response) => {
             console.log(response.data.sevendaysList);
             this.$store.state.environmentSevendays = response.data.sevendaysList;
@@ -128,6 +128,11 @@ export default {
         })
     }
   }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
 }
 
 

@@ -53,8 +53,9 @@ public class EnvironmentReader implements ItemReader<String> {
 		String sidoStr = "";
 		
 		String sidoTxtFilePath = new File("").getAbsolutePath() + "\\src\\main\\resources\\sidoTxtFile.txt";
-		String changeSidoTxtFilePathForOS = sidoTxtFilePath.replaceAll(Matcher.quoteReplacement(File.separator), "/");
-		File file = new File(changeSidoTxtFilePathForOS);
+		// 자동으로 변환해주는 구분자로 윈도우와 리눅스 둘 다 해주려고 했지만 프로젝트 경로가 달라서 안됨.
+		String str = sidoTxtFilePath.replaceAll(Matcher.quoteReplacement(File.separator), "/");
+		File file = new File(str);
 		Scanner sc;
 		
 		try {
